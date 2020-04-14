@@ -4,8 +4,7 @@
   </head>
   <body>
     <?php
-    $number = 5;
-    echo "The number of the day is $number!";
+    phpinfo();
     ?>
   </body>
 </html>
