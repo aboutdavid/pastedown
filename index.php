@@ -1,7 +1,5 @@
 <?php
-require "./vendor/autoload.php"
-  
-$Parsedown = new Parsedown();
-
-echo $Parsedown->text('Hello _Parsedown_!');
+require "/app/vendor/autoload.php"
+  $Parsedown = new Parsedown();
+  echo $Parsedown->line('Hello _Parsedown_!');
 ?>
