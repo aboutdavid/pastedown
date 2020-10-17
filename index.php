@@ -66,7 +66,7 @@ $ini = parse_ini_file('config.ini');
                 <div class="container-fluid">
   <div class="row">
     <div class="col-sm shadow" style="resize:none;"><textarea class="form-control" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:80vh;" id="editor" oninput="updatePreview();"></textarea></div>
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;"></div>
+    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:80vh;white-space:normal;"></div>
   </div>
 </div>
             </div>
