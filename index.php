@@ -21,7 +21,7 @@ $ini = parse_ini_file('config.ini');
                 </div>
                 <!-- Navbar brand -->
                 <a href="/" class="navbar-brand">
-                    <img src="..." alt="..." onerror="this.style.display='none'">
+                    <img src="https://cdn.glitch.com/65fb0f88-4115-49b0-bcb6-88908e25d1db%2Fnotepad.svg?v=1602954032741" alt="Icon" onerror="this.style.display='none'"><?php echo $ini['brand_name']; ?>
                 </a>
                 <!-- Navbar nav -->
                 <ul class="navbar-nav d-none d-md-flex">
@@ -36,7 +36,7 @@ $ini = parse_ini_file('config.ini');
                 </ul>
                 <!-- Navbar form (inline form) -->
               <div class="navbar-content ml-auto">
-                    <button class="btn btn-primary" type="submit">🌙</button>
+                    <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode();">🌙</button>
               </div>
                 <!-- Navbar content (with the dropdown menu) -->
                 <div class="navbar-content d-md-none ml-auto">
