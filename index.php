@@ -1,5 +1,5 @@
 <?php require __DIR__ . '/vendor/autoload.php'; 
-$ini = parse_ini_file('./config.ini');
+$ini = parse_ini_file('config.ini');
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,15 +17,11 @@ $ini = parse_ini_file('./config.ini');
             <nav class="navbar">
                 <!-- Navbar content (with toggle sidebar button) -->
                 <div class="navbar-content">
-                    <button class="btn btn-action" type="button">
-                        <i class="fa fa-bars" aria-hidden="true"></i>
-                        <span class="sr-only">Toggle sidebar</span> 
-                        <!-- sr-only = show only on screen readers -->
-                    </button>
+
                 </div>
                 <!-- Navbar brand -->
                 <a href="/" class="navbar-brand">
-                    <img src="..." alt="..." onerror="this.style.display='none'">Brand
+                    <img src="..." alt="..." onerror="this.style.display='none'">
                 </a>
                 <!-- Navbar nav -->
                 <ul class="navbar-nav d-none d-md-flex">
