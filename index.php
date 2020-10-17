@@ -25,7 +25,7 @@ $ini = parse_ini_file('./config.ini');
                 </div>
                 <!-- Navbar brand -->
                 <a href="/" class="navbar-brand">
-                    <img src="..." alt="...">Brand
+                    <img src="..." alt="..." onerror="this.style.display='none'">Brand
                 </a>
                 <!-- Navbar nav -->
                 <ul class="navbar-nav d-none d-md-flex">
@@ -39,11 +39,9 @@ $ini = parse_ini_file('./config.ini');
                   
                 </ul>
                 <!-- Navbar form (inline form) -->
-                <form class="form-inline d-none d-md-flex ml-auto" action="..." method="...">
-                    <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
-                    <input type="text" class="form-control" placeholder="Email address" required="required">
-                    <button class="btn btn-primary" type="submit">Sign up</button>
-                </form>
+              <div class="navbar-content ml-auto">
+                    <button class="btn btn-primary" type="submit">🌙</button>
+              </div>
                 <!-- Navbar content (with the dropdown menu) -->
                 <div class="navbar-content d-md-none ml-auto">
                     <!-- d-md-none = display: none on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
