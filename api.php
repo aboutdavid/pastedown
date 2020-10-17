@@ -1,18 +1,10 @@
 <?php
-$n=10; 
-function randomString($n) { 
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
-    $randomString = ''; 
-  
-    for ($i = 0; $i < $n; $i++) { 
-        $index = rand(0, strlen($characters) - 1); 
-        $randomString .= $characters[$index]; 
-    } 
-  
-    return $randomString; 
-};
-$h=getName($n);
-echo $h;
-echo "<br>";
-echo $h;
+$file = fopen("database.json","r+");
+$jsonobj = fread($file,filesize("database.json"));
+
+$arr = json_decode($jsonobj, true);
+
+echo $arr["v1"];
+echo $arr["v2"];
+echo $arr["v3"];
 ?>
