@@ -70,7 +70,7 @@ $ini = parse_ini_file('config.ini');
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm shadow" style="resize:none;"><textarea class="form-control" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:100%;" id="editor" oninput="updatePreview();"></textarea></div>
+    <div class="col-sm shadow" style="resize:none;"><textarea class="form-control" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:80vh;" id="editor" oninput="updatePreview();"></textarea></div>
     <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;"></div>
   </div>
 </div>
@@ -83,7 +83,7 @@ $ini = parse_ini_file('config.ini');
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
-      <script>"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode();const tx=document.getElementsByTagName("textarea");for(let a=0;a<tx.length;a++)tx[a].setAttribute("style","height:"+tx[a].scrollHeight+"px;overflow-y:hidden;"),tx[a].addEventListener("input",OnInput,!1);function OnInput(){this.style.height="auto",this.style.height=this.scrollHeight+"px"}</script>
+      <script>"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode();</script>
       <script>
       function updatePreview(){
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value)) + "\n\n\n";
