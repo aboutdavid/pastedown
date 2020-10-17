@@ -1,19 +1,14 @@
 <?php
 $file = fopen("database.json","w+");
-$jsonobj = fread($file,filesize("database.json"));
+$dbobj = fread($file,filesize("database.json"));
 
-$arr = json_decode($jsonobj, true);
+$db = json_decode($dbobj, true);
 
-$arr["key1"] = "value1";
-$arr["key2"] = "value2";
-$arr["key3"] = "value3";
-
-echo $arr["v1"];
-echo $arr["v2"];
-echo $arr["v3"];
+$db["key"] = "value";
 
 
-$save = json_encode($arr);
-file_put_contents($file,$save);
+$encoded = json_encode($db);
+echo $encoded;
+fwrite($file,$encoded);
 fclose($file);
 ?>
