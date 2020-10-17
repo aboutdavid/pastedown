@@ -70,8 +70,8 @@ $ini = parse_ini_file('config.ini');
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm shadow"><textarea class="form-control" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;"></textarea></div>
-    <div class="col-sm shadow" id="preview" style="padding-left:10px;"></div>
+    <div class="col-sm shadow"><textarea class="form-control" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;" id="editor" oninput="updatePreview();"></textarea></div>
+    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;"></div>
   </div>
 </div>
             </div>
@@ -82,10 +82,11 @@ $ini = parse_ini_file('config.ini');
   <script src="/js/halfmoon.js"></script>
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
+      <script src="/js/xss.js"></script>
       <script>"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode();</script>
       <script>
       function updatePreview(){
-        document.getElementById('preview').innerHTML = marked('# Marked in browser\n\nRendered by **marked**.');
+        document.getElementById('preview').innerHTML = marked(filterXSS(document.getElementById('editor').value));
       }
       </script>
     </header>
