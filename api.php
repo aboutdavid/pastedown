@@ -1,13 +1,13 @@
 <?php
 $file = file_get_contents("database.json");
-$paste = $_SERVER['paste'];
+$paste = $_REQUEST['paste'];
 $ini = parse_ini_file('config.ini');
-
+$n = 100;
 // Do some string generation
-    $characters = '             　'; 
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
     $randomString = ''; 
   
-    for ($i = 0; $i < intval($ini['char_length']); $i++) { 
+    for ($i = 0; $i < $n; $i++) { 
         $index = rand(0, strlen($characters) - 1); 
         $randomString .= $characters[$index]; 
     } 
