@@ -83,7 +83,11 @@ $ini = parse_ini_file('config.ini');
       function updatePreview(){
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
-        function 
+      function save(){
+        let response = await fetch("/api.php");
+        var res = response.text();
+        location.replace("/")
+      }
       </script>
     </header>
 </body>
