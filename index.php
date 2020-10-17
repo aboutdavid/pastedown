@@ -10,7 +10,7 @@ $ini = parse_ini_file('config.ini');
 <head>
 </head>
 
-<body>
+<body onload="updatePreview();">
     <header>
     
         <!-- Page wrapper with .with-navbar class -->
@@ -70,8 +70,8 @@ $ini = parse_ini_file('config.ini');
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm"><textarea class="form-control" placeholder="Normal textarea for multi-line input"></textarea></div>
-    <div class="col-sm"></div>
+    <div class="col-sm shadow"><textarea class="form-control" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;"></textarea></div>
+    <div class="col-sm shadow" id="preview" style="padding-left:10px;"></div>
   </div>
 </div>
             </div>
@@ -81,7 +81,13 @@ $ini = parse_ini_file('config.ini');
           <!-- Add main JS files -->
   <script src="/js/halfmoon.js"></script>
   <script src="/js/main.js"></script>
+  <script src="/js/marked.js"></script>
       <script>"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode();</script>
+      <script>
+      function updatePreview(){
+        document.getElementById('preview').innerHTML = marked('# Marked in browser\n\nRendered by **marked**.');
+      }
+      </script>
     </header>
 </body>
 <footer>
