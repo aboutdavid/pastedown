@@ -1,4 +1,6 @@
-<?php require __DIR__ . '/vendor/autoload.php'; ?>
+<?php require __DIR__ . '/vendor/autoload.php'; 
+$ini = parse_ini_file('./config.ini');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -25,9 +27,6 @@
                 <a href="/" class="navbar-brand">
                     <img src="..." alt="...">Brand
                 </a>
-                <!-- Navbar text -->
-                <span class="navbar-text text-monospace">v3.0</span> 
-                <!-- text-monospace = font-family shifted to monospace -->
                 <!-- Navbar nav -->
                 <ul class="navbar-nav d-none d-md-flex">
                     <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
@@ -37,6 +36,7 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">Products</a>
                     </li>
+                  
                 </ul>
                 <!-- Navbar form (inline form) -->
                 <form class="form-inline d-none d-md-flex ml-auto" action="..." method="...">
