@@ -1,6 +1,6 @@
 <?php
 $n=10; 
-function getName($n) { 
+function randomString($n) { 
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
     $randomString = ''; 
   
