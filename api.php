@@ -10,7 +10,9 @@ function getName($n) {
     } 
   
     return $randomString; 
-} 
-  
-echo getName($n); 
+};
+$h=getName($n);
+echo $h;
+echo "<br>";
+echo $h;
 ?>
