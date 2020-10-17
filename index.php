@@ -3,14 +3,16 @@ $ini = parse_ini_file('config.ini');
 ?>
 <!DOCTYPE html>
 <html>
+<!-- Add main CSS files -->
+  <link rel="stylesheet" href="/css/halfmoon.css">
+  <link rel="stylesheet" href="/css/main.css">
 
 <head>
-    <?php include_once( 'includes/header.php'); ?>
 </head>
 
 <body>
     <header>
-        <link rel="stylesheet" href="/css/halfmoon.css">
+    
         <!-- Page wrapper with .with-navbar class -->
         <div class="page-wrapper with-navbar">
             <!-- Navbar (immediate child of the page wrapper) -->
@@ -66,16 +68,23 @@ $ini = parse_ini_file('config.ini');
 
             <!-- Content wrapper -->
             <div class="content-wrapper">
-                ...
+                <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm"><textarea class="form-control" placeholder="Normal textarea for multi-line input"></textarea></div>
+    <div class="col-sm"></div>
+  </div>
+</div>
             </div>
         </div>
 
         <!-- Requires halfmoon.js for the dropdowns -->
-        <script src="/js/halfmoon.js"></script>
+          <!-- Add main JS files -->
+  <script src="/js/halfmoon.js"></script>
+  <script src="/js/main.js"></script>
+      <script>"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode();</script>
     </header>
 </body>
 <footer>
-    <?php include_once( 'includes/footer.php'); ?>
 </footer>
 
 </html>
