@@ -22,7 +22,7 @@ $ini = parse_ini_file('config.ini');
 
                 </div>
                 <!-- Navbar brand -->
-                <a href="/" class="navbar-brand">
+                <a href="" class="navbar-brand">
                     <img src="https://cdn.glitch.com/65fb0f88-4115-49b0-bcb6-88908e25d1db%2Fnotepad.svg?v=1602954032741" alt="Icon" onerror="this.style.display='none'"><?php echo $ini['brand_name']; ?>
                 </a>
                 <!-- Navbar nav -->
@@ -38,6 +38,7 @@ $ini = parse_ini_file('config.ini');
                 </ul>
                 <!-- Navbar form (inline form) -->
               <div class="navbar-content ml-auto">
+                    <button class="btn btn-primary" type="button" onclick="this.disabled = true;this.innerText = 'Saving...'">Save</button>&nbsp;
                     <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode();">🌙</button>
               </div>
                 <!-- Navbar content (with the dropdown menu) -->
@@ -82,10 +83,11 @@ $ini = parse_ini_file('config.ini');
       function updatePreview(){
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
+        function 
       </script>
     </header>
 </body>
 <footer>
-&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.
+<p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
 </footer>
 </html>
