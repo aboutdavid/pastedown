@@ -6,10 +6,11 @@ $db = json_decode($dbobj, true);
 
 $db["key1"] = "value1";
 $db["key2"] = "value1";
-$db["key4"] = "value1";
+$db["key3"] = "value1";
 
+echo var_dump($db) . "<br><br>";
 $encoded = json_encode($db);
 echo $encoded;
-fwrite($file,$encoded);
+file_put_contents($file,$encoded);
 fclose($file);
 ?>
