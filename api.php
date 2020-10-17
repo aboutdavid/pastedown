@@ -2,7 +2,7 @@
 $file = file_get_contents("database.json");
 $paste = $_REQUEST['paste'];
 $ini = parse_ini_file('config.ini');
-$n = 100;
+$n = 5;
 // Do some string generation
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
     $randomString = ''; 
@@ -17,11 +17,10 @@ $db = json_decode($file, true);
 
 $db[$randomString] = $paste;
 
-
-echo var_dump($db) . "<br><br>";
 $encoded = json_encode($db);
-echo $encoded;
+
 $fileobj = fopen("database.json", 'w');
 fwrite($fileobj,$encoded);
 fclose($fileobj);
+echo $randomString;
 ?>
