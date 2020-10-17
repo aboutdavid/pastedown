@@ -78,15 +78,10 @@ $ini = parse_ini_file('config.ini');
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
-    <script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||("dark-mode"==halfmoon.getPreferredMode()||"not-set"==halfmoon.getPreferredMode()&&{{ metadata.defaultDarkMode }})&&halfmoon.toggleDarkMode();</script>
+    <script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||("dark-mode"==halfmoon.getPreferredMode()?halfmoon.toggleDarkMode():"not-set"==halfmoon.getPreferredMode()&&halfmoon.toggleDarkMode());</script>
       <script>
       function updatePreview(){
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
-      }
-      function save(){
-        let response = await fetch("/api.php");
-        var res = response.text();
-        location.replace("/")
       }
       </script>
     </header>
