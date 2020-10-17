@@ -1,11 +1,13 @@
 <?php
 $file = file_get_contents("database.json");
 $paste = $_SERVER['paste'];
+$ini = parse_ini_file('config.ini');
+
 // Do some string generation
-    $characters = '    '; 
+    $characters = '             　'; 
     $randomString = ''; 
   
-    for ($i = 0; $i < $n; $i++) { 
+    for ($i = 0; $i < intval($ini['char_length']); $i++) { 
         $index = rand(0, strlen($characters) - 1); 
         $randomString .= $characters[$index]; 
     } 
@@ -13,9 +15,8 @@ $paste = $_SERVER['paste'];
 
 $db = json_decode($file, true);
 
-$db["key1"] = "value1";
-$db["key2"] = "value1";
-$db["key5"] = "value1";
+$db[$randomString] = $paste;
+
 
 echo var_dump($db) . "<br><br>";
 $encoded = json_encode($db);
