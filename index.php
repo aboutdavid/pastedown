@@ -83,10 +83,10 @@ $ini = parse_ini_file('config.ini');
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
-      <script>"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode();</script>
+      <script>"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode();const tx=document.getElementsByTagName("textarea");for(let a=0;a<tx.length;a++)tx[a].setAttribute("style","height:"+tx[a].scrollHeight+"px;overflow-y:hidden;"),tx[a].addEventListener("input",OnInput,!1);function OnInput(){this.style.height="auto",this.style.height=this.scrollHeight+"px"}</script>
       <script>
       function updatePreview(){
-        document.getElementById('preview').innerHTML = marked(filterXSS(document.getElementById('editor').value));
+        document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
       </script>
     </header>
