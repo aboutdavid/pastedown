@@ -1,7 +1,10 @@
 <?php
 $file = file_get_contents("database.json");
-$paste = $_REQUEST['paste'];
+$paste = trim($_REQUEST['paste']);
 $ini = parse_ini_file('config.ini');
+if (empty($paste)) {
+  echo "empty";
+}
 $n = 5;
 // Do some string generation
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 

@@ -78,11 +78,24 @@ $ini = parse_ini_file('config.ini');
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
+      <script src="/js/axios.js"></script>
     <script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||("dark-mode"==halfmoon.getPreferredMode()?halfmoon.toggleDarkMode():"not-set"==halfmoon.getPreferredMode()&&halfmoon.toggleDarkMode());</script>
       <script>
       function updatePreview(){
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
+        function save(){
+          axios.post('/api.php?paste='+ document.getElementById('editor').value, {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+        }
       </script>
     </header>
 </body>
