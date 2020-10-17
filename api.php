@@ -1,5 +1,5 @@
 <?php
-$file = fopen("database.json","r+");
+$file = fopen("database.json","w+");
 $jsonobj = fread($file,filesize("database.json"));
 
 $arr = json_decode($jsonobj, true);
@@ -14,6 +14,6 @@ echo $arr["v3"];
 
 
 $save = json_encode($arr);
-fwrite($file,$save);
+file_put_contents($file,$save);
 fclose($file);
 ?>
