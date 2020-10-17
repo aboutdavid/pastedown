@@ -10,7 +10,7 @@ $ini = parse_ini_file('config.ini');
 <head>
 </head>
 
-<body onload="updatePreview();">
+<body onload="updatePreview();" data-set-preferred-mode-onload="true">
     <header>
     
         <!-- Page wrapper with .with-navbar class -->
@@ -54,12 +54,6 @@ $ini = parse_ini_file('config.ini');
                             <a href="#" class="dropdown-item">Products</a>
                             <div class="dropdown-divider"></div>
                             <div class="dropdown-content">
-                                <form action="..." method="...">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Email address" required="required">
-                                    </div>
-                                    <button class="btn btn-primary btn-block" type="submit">Sign up</button>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -83,15 +77,15 @@ $ini = parse_ini_file('config.ini');
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
-      <script>"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode();</script>
+    <script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||("dark-mode"==halfmoon.getPreferredMode()||"not-set"==halfmoon.getPreferredMode()&&{{ metadata.defaultDarkMode }})&&halfmoon.toggleDarkMode();</script>
       <script>
       function updatePreview(){
-        document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value)) + "\n\n\n";
+        document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
       </script>
     </header>
 </body>
 <footer>
+&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.
 </footer>
-
 </html>
