@@ -1,5 +1,12 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
   $Parsedown = new Parsedown();
-  echo $Parsedown->line('Hello _Parsedown_!');
+ echo $Parsedown->text('Hello _Parsedown_!');
 ?>
+
+
+aaaa
+
+
+
+aaaa
