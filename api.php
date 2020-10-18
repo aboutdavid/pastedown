@@ -1,12 +1,12 @@
 <?php
 $file = file_get_contents("database.json");
-$paste = $_SERVER['paste'];
+$paste = $_REQUEST['paste'];
 $ini = parse_ini_file('config.ini');
-if ($paste == null) {
-  echo $paste;
+if ($paste === null) {
+  echo "empty";
   die();
 }
-$n = 5;
+$n = 7;
 // Do some string generation
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
     $randomString = ''; 
