@@ -1,6 +1,8 @@
-<?php require __DIR__ . '/vendor/autoload.php'; 
+<?php 
+require __DIR__ . '/vendor/autoload.php'; 
 $ini = parse_ini_file('config.ini');
-
+$file = file_get_contents("database.json");
+$db = json_decode($file, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +41,7 @@ $ini = parse_ini_file('config.ini');
                 </ul>
                 <!-- Navbar form (inline form) -->
               <div class="navbar-content ml-auto">
-                    <button class="btn btn-primary" type="button" onclick="this.disabled = true;this.innerText = 'Saving...'" id="savebtn">Save</button>&nbsp;
+                    <button class="btn btn-primary" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';save();" id="savebtn">Save!</button>&nbsp;
                     <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode();">🌙</button>
               </div>
                 <!-- Navbar content (with the dropdown menu) -->
@@ -81,8 +83,12 @@ $ini = parse_ini_file('config.ini');
       <script src="/js/xss.js"></script>
       <script src="/js/axios.js"></script>
     <script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||("dark-mode"==halfmoon.getPreferredMode()?halfmoon.toggleDarkMode():"not-set"==halfmoon.getPreferredMode()&&halfmoon.toggleDarkMode());</script>
-      <script>
-      function updatePreview(){
+
+    </header>
+</body>
+<footer>
+  <script>
+        function updatePreview(){
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
     function save(){
@@ -90,17 +96,19 @@ $ini = parse_ini_file('config.ini');
 
   })
   .then(function (response) {
-    console.log(response);
+    if (response.data = "empty"){
+      document.getElementById('preview').innerHTML = "You can't have a empty paste."
+      setTimeout(function(){ document.getElementById('savebtn').innerHTML = "Save!";savebtn.disabled = "false" }, 3000);
+      return;
+    }
+    window.location.replace("/paste.php?id="+ response.data)
   })
   .catch(function (error) {
-    document.getElementById('preview').innerHTML = "Something went wrong..."
-    setTimeout(function(){ document.getElementById('preview').innerHTML = "Save!" }, 3000);
+    document.getElementById('savebtn').innerHTML = "Something went wrong..."
+    setTimeout(function(){ document.getElementById('savebtn').innerHTML = "Save!";savebtn.disabled = "false"}, 3000);
   });
         }
-      </script>
-    </header>
-</body>
-<footer>
+  </script>
 <p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
 </footer>
 </html>

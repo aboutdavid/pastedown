@@ -3,6 +3,7 @@ require __DIR__ . '/vendor/autoload.php';
 $ini = parse_ini_file('config.ini');
 $Parsedown = new Parsedown();
 $file = file_get_contents("database.json");
+$db = json_decode($file, true);
 ?>
 
 
@@ -70,7 +71,7 @@ $file = file_get_contents("database.json");
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <center> <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;white-space:normal;"><?php echo $Parsedown->text(); ?></div></center>
+    <center> <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;white-space:normal;"><?php echo $Parsedown->text($db[$_REQUEST['id']]); ?></div></center>
   </div>
 </div>
             </div>
@@ -85,21 +86,7 @@ $file = file_get_contents("database.json");
       <script src="/js/axios.js"></script>
     <script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||("dark-mode"==halfmoon.getPreferredMode()?halfmoon.toggleDarkMode():"not-set"==halfmoon.getPreferredMode()&&halfmoon.toggleDarkMode());</script>
       <script>
-      function updatePreview(){
-        document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
-      }
-    function save(){
-          axios.post('/api.php?paste='+ document.getElementById('editor').value, {
 
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    document.getElementById('preview').innerHTML = "Something went wrong..."
-    setTimeout(function(){ document.getElementById('preview').innerHTML = "Save!" }, 3000);
-  });
-        }
       </script>
     </header>
 </body>
