@@ -16,7 +16,7 @@ $db = json_decode($file, true);
 <head>
 </head>
 
-<body onload="updatePreview();" data-set-preferred-mode-onload="true">
+<body data-set-preferred-mode-onload="true">
     <header>
     
         <!-- Page wrapper with .with-navbar class -->
@@ -49,21 +49,7 @@ $db = json_decode($file, true);
               </div>
                 <!-- Navbar content (with the dropdown menu) -->
                 <div class="navbar-content d-md-none ml-auto">
-                    <!-- d-md-none = display: none on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
-                    <div class="dropdown with-arrow">
-                        <button class="btn" data-toggle="dropdown" type="button" id="navbar-dropdown-toggle-btn-1">
-                            Menu
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right w-200" aria-labelledby="navbar-dropdown-toggle-btn-1">
-                            <!-- w-200 = width: 20rem (200px) -->
-                            <a href="#" class="dropdown-item">Docs</a>
-                            <a href="#" class="dropdown-item">Products</a>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-content">
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </nav>
 
@@ -71,7 +57,7 @@ $db = json_decode($file, true);
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <center> <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;white-space:normal;"><?php echo $Parsedown->text($db[$_REQUEST['id']]); ?></div></center>
+    <center> <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;text-align:center;"><?php echo $Parsedown->text($db[$_REQUEST['id']]); ?></div></center>
   </div>
 </div>
             </div>

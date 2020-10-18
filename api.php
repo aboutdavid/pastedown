@@ -1,9 +1,9 @@
 <?php
 $file = file_get_contents("database.json");
-$paste = trim($_REQUEST['paste']);
+$paste = $_SERVER['paste'];
 $ini = parse_ini_file('config.ini');
-if (empty($paste)) {
-  echo "empty";
+if ($paste == null) {
+  echo $paste;
   die();
 }
 $n = 5;

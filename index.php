@@ -96,16 +96,17 @@ $db = json_decode($file, true);
 
   })
   .then(function (response) {
-    if (response.data = "empty"){
-      document.getElementById('preview').innerHTML = "You can't have a empty paste."
-      setTimeout(function(){ document.getElementById('savebtn').innerHTML = "Save!";savebtn.disabled = "false" }, 3000);
+            console.log(response)
+    if (response.data === "emptyy"){
+      document.getElementById('savebtn').innerHTML = "You can't have a empty paste."
+      setTimeout(function(){ document.getElementById('savebtn').innerHTML = "Save!";savebtn.disabled = false }, 3000);
       return;
     }
     window.location.replace("/paste.php?id="+ response.data)
   })
   .catch(function (error) {
     document.getElementById('savebtn').innerHTML = "Something went wrong..."
-    setTimeout(function(){ document.getElementById('savebtn').innerHTML = "Save!";savebtn.disabled = "false"}, 3000);
+    setTimeout(function(){ document.getElementById('savebtn').innerHTML = "Save!";savebtn.disabled = false}, 3000);
   });
         }
   </script>
