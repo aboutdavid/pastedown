@@ -57,7 +57,7 @@ $db = json_decode($file, true);
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <center> <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;text-align:center;"><?php echo $Parsedown->text($db[$_REQUEST['id']]); ?></div></center>
+    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;text-align:center;"><?php echo $Parsedown->text($db[$_REQUEST['id']]); ?></div></center>
   </div>
 </div>
             </div>

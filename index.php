@@ -97,7 +97,7 @@ $db = json_decode($file, true);
   })
   .then(function (response) {
             console.log(response)
-    if (response.data === "emptyy"){
+    if (response.data === "empty"){
       document.getElementById('savebtn').innerHTML = "You can't have a empty paste."
       setTimeout(function(){ document.getElementById('savebtn').innerHTML = "Save!";savebtn.disabled = false }, 3000);
       return;
