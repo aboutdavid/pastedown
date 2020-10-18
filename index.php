@@ -1,5 +1,6 @@
 <?php require __DIR__ . '/vendor/autoload.php'; 
 $ini = parse_ini_file('config.ini');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +39,7 @@ $ini = parse_ini_file('config.ini');
                 </ul>
                 <!-- Navbar form (inline form) -->
               <div class="navbar-content ml-auto">
-                    <button class="btn btn-primary" type="button" onclick="this.disabled = true;this.innerText = 'Saving...'">Save</button>&nbsp;
+                    <button class="btn btn-primary" type="button" onclick="this.disabled = true;this.innerText = 'Saving...'" id="savebtn">Save</button>&nbsp;
                     <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode();">🌙</button>
               </div>
                 <!-- Navbar content (with the dropdown menu) -->
@@ -84,16 +85,16 @@ $ini = parse_ini_file('config.ini');
       function updatePreview(){
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
-        function save(){
+    function save(){
           axios.post('/api.php?paste='+ document.getElementById('editor').value, {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
+
   })
   .then(function (response) {
     console.log(response);
   })
   .catch(function (error) {
-    console.log(error);
+    document.getElementById('preview').innerHTML = "Something went wrong..."
+    setTimeout(function(){ document.getElementById('preview').innerHTML = "Save!" }, 3000);
   });
         }
       </script>

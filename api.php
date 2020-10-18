@@ -4,6 +4,7 @@ $paste = trim($_REQUEST['paste']);
 $ini = parse_ini_file('config.ini');
 if (empty($paste)) {
   echo "empty";
+  die();
 }
 $n = 5;
 // Do some string generation
