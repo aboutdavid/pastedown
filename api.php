@@ -26,6 +26,6 @@ $encoded = json_encode($db);
 $fileobj = fopen("database.json", 'w');
 fwrite($fileobj,$encoded);
 fclose($fileobj);
-header("Location: /paste.php?id=" . $randomString);
+header("Location: /paste?id=" . $randomString);
 exit();
 ?>

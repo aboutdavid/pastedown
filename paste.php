@@ -14,6 +14,24 @@ $db = json_decode($file, true);
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="HandheldFriendly" content="true">
+  <!-- Primary Meta Tags -->
+<title>Pastedown - a Markdown Pastebin</title>
+<meta name="title" content="Pastedown - a Markdown Pastebin">
+<meta name="description" content="Welcome to Pastedown! A simple Pastebin that allows Markdown. Pretty cool right?">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pastedown.glitch.me/">
+<meta property="og:title" content="Pastedown - a Markdown Pastebin">
+<meta property="og:description" content="Welcome to Pastedown! A simple Pastebin that allows Markdown. Pretty cool right?">
+<meta property="og:image" content="">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pastedown.glitch.me/">
+<meta property="twitter:title" content="Pastedown - a Markdown Pastebin">
+<meta property="twitter:description" content="Welcome to Pastedown! A simple Pastebin that allows Markdown. Pretty cool right?">
+<meta property="twitter:image" content="">
 <!-- Add main CSS files -->
   <link rel="stylesheet" href="/css/halfmoon.css">
   <link rel="stylesheet" href="/css/main.css">
