@@ -17,7 +17,7 @@ $db = json_decode($file, true);
 <!-- Add main CSS files -->
   <link rel="stylesheet" href="/css/halfmoon.css">
   <link rel="stylesheet" href="/css/main.css">
-
+<link rel="stylesheet" href="/css/prism.css">
 <head>
 </head>
 
@@ -76,6 +76,7 @@ $db = json_decode($file, true);
     </header>
 </body>
 <footer>
+  <script src="/js/prism.js"></script>
 <p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
 </footer>
 </html>
