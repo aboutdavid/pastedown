@@ -49,14 +49,15 @@ ob_start("sanitize_output");
 <meta name="HandheldFriendly" content="true">
 <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+
 <!-- Add main CSS files -->
   <link rel="stylesheet" href="/css/halfmoon.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/prism.css">
 <!-- Do Recaptcha spam prevention -->
 <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $ini['recapctha_public']; ?>"></script>
-<script src="/js/jquery.js"></script>
 
 <head>
 </head>
