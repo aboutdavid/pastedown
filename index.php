@@ -48,7 +48,7 @@ $db = json_decode($file, true);
 
                 </div>
                 <!-- Navbar brand -->
-                <a href="" class="navbar-brand">
+                <a href="/" class="navbar-brand">
                     <img src="https://cdn.glitch.com/65fb0f88-4115-49b0-bcb6-88908e25d1db%2Fnotepad.svg?v=1602954032741" alt="Icon" onerror="this.style.display='none'"><?php echo $ini['brand_name']; ?>
                 </a>
                 <!-- Navbar nav -->
@@ -76,7 +76,7 @@ $db = json_decode($file, true);
             <div class="content-wrapper">
                 
   
-    <textarea class="form-control col-sm shadow" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:90vh;padding-top:50px;" id="editor" oninput="updatePreview();" name="paste"></textarea>
+    <textarea class="form-control col-sm shadow" style="outline:none;resize:none;border:none;height:90vh;padding-top:50px;" id="editor" oninput="updatePreview();" name="paste"></textarea>
     <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;padding-top:35px;display:none;"></div>
 </form>
             </div>
@@ -89,8 +89,7 @@ $db = json_decode($file, true);
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
       <script src="/js/axios.js"></script>
-    <script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||("dark-mode"==halfmoon.getPreferredMode()?halfmoon.toggleDarkMode():"not-set"==halfmoon.getPreferredMode()&&halfmoon.toggleDarkMode());</script>
-
+<script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode()</script>
     </header>
 </body>
 <footer>

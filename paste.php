@@ -5,6 +5,10 @@ $Parsedown = new Parsedown();
 $Parsedown->setSafeMode(true);
 $file = file_get_contents("database.json");
 $db = json_decode($file, true);
+if (!$db[$_REQUEST['id']]){
+http_response_code(404);
+  exit();
+}
 ?>
 
 
@@ -51,7 +55,7 @@ $db = json_decode($file, true);
 
                 </div>
                 <!-- Navbar brand -->
-                <a href="" class="navbar-brand">
+                <a href="/" class="navbar-brand">
                     <img src="https://cdn.glitch.com/65fb0f88-4115-49b0-bcb6-88908e25d1db%2Fnotepad.svg?v=1602954032741" alt="Icon" onerror="this.style.display='none'"><?php echo $ini['brand_name']; ?>
                 </a>
                 <!-- Navbar nav -->
@@ -87,8 +91,7 @@ $db = json_decode($file, true);
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
       <script src="/js/axios.js"></script>
-    <script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||("dark-mode"==halfmoon.getPreferredMode()?halfmoon.toggleDarkMode():"not-set"==halfmoon.getPreferredMode()&&halfmoon.toggleDarkMode());</script>
-      <script>
+<script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode()</script>      <script>
 
       </script>
     </header>
