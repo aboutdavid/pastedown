@@ -8,11 +8,11 @@ echo "That paste was not found!";
 exit();
 }
 if (!$db["pastes"][$_REQUEST['id']]["edit_code"]){
-http_response_code(403);
+http_response_code(400);
 echo "You must provide an edit code!";
 exit();
 }
-if ($db["pastes"][$_REQUEST['id']]["edit_code"] !== ""){
+if ($db["pastes"][$_REQUEST['id']]["edit_code"] !== $_REQUEST['edit_code'){
 http_response_code(403);
 echo "Wrong edit code!";
 exit();
@@ -74,8 +74,11 @@ ob_start("sanitize_output");
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/prism.css">
 <!-- Do Recaptcha spam prevention -->
-<script src="https://www.google.com/recaptcha/api.js?render=<?php echo $ini['recapctha_public']; ?>"></script>
-
+<?php
+if ($ini['visibility'] == "public"){
+echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['recaptcha_public'] . '"></script>';
+}
+?>
 <head>
 </head>
 
