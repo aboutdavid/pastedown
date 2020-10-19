@@ -1,4 +1,4 @@
-const staticCacheName = "writepad";
+const staticCacheName = "pastedown";
 const assets = [
   "/js/halfmoon.js",
   "/js/main.js",

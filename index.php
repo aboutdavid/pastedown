@@ -105,7 +105,7 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
             <div class="content-wrapper">
                 <div id="gcaptcha_form"></div>
     <br><br>
-    <textarea class="form-control col-sm shadow" style="outline:none;resize:none;border:none;" id="editor" oninput="updatePreview();" name="paste" id="paste" rows="25"></textarea>
+    <textarea class="form-control col-sm shadow" style="outline:none;resize:none;border:none;display:block;height:250px;left:50%;margin-top:-125px;margin-left:-125px;position:absolute;top:50%;" id="editor" oninput="updatePreview();" name="paste" id="paste" rows="200" cols=""></textarea>
     <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;white-space:normal;display:none;"></div>
 </form>
             </div>
