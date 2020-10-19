@@ -13,7 +13,7 @@ RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^/?users/(.*?)/?$ /users.php?name=$1 [L]
+RewriteRule ^/?paste/(.*?)/?$ /paste.php?id=$1 [L]
 
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /users\.php\?name=([^\&\ ]+)
-RewriteRule ^/?users\.php$ /users/%1? [L,R=301]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /paste\.php\?id=([^\&\ ]+)
+RewriteRule ^/?paste\.php$ /paste/%1? [L,R=301]

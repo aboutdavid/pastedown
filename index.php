@@ -1,5 +1,4 @@
 <?php 
-require __DIR__ . '/vendor/autoload.php'; 
 $ini = parse_ini_file('config.ini');
 $file = file_get_contents("database.json");
 $db = json_decode($file, true);
