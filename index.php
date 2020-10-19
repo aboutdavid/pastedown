@@ -35,39 +35,21 @@ $db = json_decode($file, true);
                 <!-- Navbar nav -->
                 <ul class="navbar-nav d-none d-md-flex">
                     <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link">Docs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Products</a>
-                    </li>
+    
                   
                 </ul>
                 <!-- Navbar form (inline form) -->
               <div class="navbar-content ml-auto">
-                    <button class="btn btn-primary" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';save();" id="savebtn">Save!</button>&nbsp;
+                    <button class="btn btn-primary" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';document.getElementById('pasteForm').submit();" id="savebtn">Save!</button>&nbsp;
                     <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode();">🌙</button>
               </div>
                 <!-- Navbar content (with the dropdown menu) -->
                 <div class="navbar-content d-md-none ml-auto">
                     <!-- d-md-none = display: none on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
-                    <div class="dropdown with-arrow">
-                        <button class="btn" data-toggle="dropdown" type="button" id="navbar-dropdown-toggle-btn-1">
-                            Menu
-                            <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right w-200" aria-labelledby="navbar-dropdown-toggle-btn-1">
-                            <!-- w-200 = width: 20rem (200px) -->
-                            <a href="#" class="dropdown-item">Docs</a>
-                            <a href="#" class="dropdown-item">Products</a>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-content">
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </nav>
-<form method="POST" action="/api.php">
+<form method="POST" action="/api.php" id="pasteForm">
   
           
             <!-- Content wrapper -->

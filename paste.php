@@ -9,6 +9,10 @@ $db = json_decode($file, true);
 
 <!DOCTYPE html>
 <html>
+  <!-- Meta tags -->
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
 <!-- Add main CSS files -->
   <link rel="stylesheet" href="/css/halfmoon.css">
   <link rel="stylesheet" href="/css/main.css">
@@ -44,7 +48,6 @@ $db = json_decode($file, true);
                 </ul>
                 <!-- Navbar form (inline form) -->
               <div class="navbar-content ml-auto">
-                    <button class="btn btn-primary" type="button" onclick="this.disabled = true;this.innerText = 'Saving...'" id="savebtn">Save</button>&nbsp;
                     <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode();">🌙</button>
               </div>
                 <!-- Navbar content (with the dropdown menu) -->
