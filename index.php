@@ -57,8 +57,8 @@ $db = json_decode($file, true);
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <textarea class="form-control col-sm shadow" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:90vh;" id="editor" oninput="updatePreview();" name="paste"></textarea>
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;"></div>
+    <textarea class="form-control col-sm shadow" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:90vh;padding-top: 25px;" id="editor" oninput="updatePreview();" name="paste"></textarea>
+    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;padding-top: 30px;"></div>
   </div>
 </div>
 </form>
