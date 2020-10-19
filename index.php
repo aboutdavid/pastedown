@@ -6,6 +6,10 @@ $db = json_decode($file, true);
 ?>
 <!DOCTYPE html>
 <html>
+  <!-- Do metatags -->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
 <!-- Add main CSS files -->
   <link rel="stylesheet" href="/css/halfmoon.css">
   <link rel="stylesheet" href="/css/main.css">
@@ -70,8 +74,8 @@ $db = json_decode($file, true);
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm shadow" style="resize:none;"><textarea class="form-control" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:80vh;" id="editor" oninput="updatePreview();" name="paste"></textarea></div>
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:80vh;white-space:normal;"></div>
+    <textarea class="form-control col-sm shadow" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:90vh;" id="editor" oninput="updatePreview();" name="paste"></textarea>
+    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;"></div>
   </div>
 </div>
 </form>
