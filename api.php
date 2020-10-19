@@ -46,7 +46,7 @@ header("Location: /paste/" . $randomString);
 exit();
   
 } else {
-echo "We think you might be a robot. Please try again later. Your response score is: " . $arrResponse["score"] . "/1.0 (1.0 not a bot, 0.0 is a bot.)";
+echo "We think you might be a robot. Please try again later. Your response score is: " . strval($arrResponse["score"]) . "/1.0 (1.0 not a bot, 0.0 is a bot.)";
 die();
 }
 ?>

@@ -2,3 +2,4 @@ vendor
 database.json
 config.ini
 .apache2
+php.ini
