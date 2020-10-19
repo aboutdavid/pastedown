@@ -7,7 +7,8 @@ $file = file_get_contents("database.json");
 $db = json_decode($file, true);
 if (!$db[$_REQUEST['id']]){
 http_response_code(404);
-  exit();
+echo "That paste was not found!";
+exit();
 }
 function sanitize_output($buffer) {
 
@@ -99,7 +100,7 @@ ob_start("sanitize_output");
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <div class="container-fluid">
-  <div class="row" style="text-align:center;">
+  <div class="row">
     <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;"><?php echo $Parsedown->text($db[$_REQUEST['id']]); ?></div></center>
   </div>
 </div>
