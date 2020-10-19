@@ -43,8 +43,8 @@ $y = 12;
 
 $db = json_decode($file, true);
 
-$db[$randomString]["paste"] = $paste;
-$db[$randomString]["edit_code"] = $editCode;
+$db["pastes"][$randomString]["content"] = $paste;
+$db["pastes"][$randomString]["edit_code"] = $editCode;
 
 $encoded = json_encode($db);
 

@@ -5,7 +5,7 @@ $Parsedown = new Parsedown();
 $Parsedown->setSafeMode(true);
 $file = file_get_contents("database.json");
 $db = json_decode($file, true);
-if (!$db[$_REQUEST['id']]){
+if (!$db["pastes"][$_REQUEST['id']]["content"]){
 http_response_code(404);
 echo "That paste was not found!";
 exit();
@@ -104,7 +104,7 @@ ob_start("sanitize_output");
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;"><?php echo $Parsedown->text($db[$_REQUEST['id']["paste"]]); ?></div></center>
+    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
   </div>
 </div>
             </div>
