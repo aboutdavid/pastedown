@@ -1,0 +1,31 @@
+{
+  "name": "pastedown",
+  "short_name": "pastedown",
+  "start_url": ".",
+  "display": "minimal-ui",
+  "background_color": "#002b36",
+  "description": "Welcome to Pastedown! A simple Pastebin that allows Markdown. Pretty cool right?",
+  "icons": [
+    {
+      "src": "img/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+     {
+      "src": "img/android-chrome-192x192.png",
+      "sizes": "192x192.png",
+      "type": "image/png"
+    },
+     {
+      "src": "img/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+     {
+      "src": "img/16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "related_applications": []
+}
