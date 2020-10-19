@@ -51,16 +51,20 @@ $db = json_decode($file, true);
             </nav>
           
 <form method="POST" action="/api.php" id="pasteForm">
-  
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+</div>
           
             <!-- Content wrapper -->
             <div class="content-wrapper">
-                <div class="container-fluid">
-  <div class="row">
-    <textarea class="form-control col-sm shadow" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:90vh;padding-top: 25px;" id="editor" oninput="updatePreview();" name="paste"></textarea>
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;padding-top: 30px;"></div>
+                
+  <div id="edit-tab" class="tabcontent">
+    <textarea class="form-control col-sm shadow" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:90vh;padding-top:50px;" id="editor" oninput="updatePreview();" name="paste"></textarea>
   </div>
-</div>
+    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;padding-top: 30px;"></div>
+  
 </form>
             </div>
         </div>
@@ -81,6 +85,19 @@ $db = json_decode($file, true);
         function updatePreview(){
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
   </script>
 <p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
 </footer>

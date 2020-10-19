@@ -2,6 +2,7 @@
 require __DIR__ . '/vendor/autoload.php';
 $ini = parse_ini_file('config.ini');
 $Parsedown = new Parsedown();
+$Parsedown->setSafeMode(true);
 $file = file_get_contents("database.json");
 $db = json_decode($file, true);
 ?>
