@@ -2,7 +2,28 @@
 $ini = parse_ini_file('config.ini');
 $file = file_get_contents("database.json");
 $db = json_decode($file, true);
+function sanitize_output($buffer) {
 
+    $search = array(
+        '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
+        '/[^\S ]+\</s',     // strip whitespaces before tags, except space
+        '/(\s)+/s',         // shorten multiple whitespace sequences
+        '/<!--(.|\s)*?-->/' // Remove HTML comments
+    );
+
+    $replace = array(
+        '>',
+        '<',
+        '\\1',
+        ''
+    );
+
+    $buffer = preg_replace($search, $replace, $buffer);
+
+    return $buffer;
+}
+
+ob_start("sanitize_output");
 ?>
 <!DOCTYPE html>
 <html>
@@ -114,5 +135,6 @@ function previewToggle() {
   </script>
   
 <p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
+  
 </footer>
 </html>
