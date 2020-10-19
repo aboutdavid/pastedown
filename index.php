@@ -40,8 +40,8 @@ $db = json_decode($file, true);
                 </ul>
                 <!-- Navbar form (inline form) -->
               <div class="navbar-content ml-auto">
-                <button class="btn btn-primary" type="button" onclick="previewToggle();" id="togglebtn">Toggle Preview</button>&nbsp;
-                    <button class="btn btn-primary" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';document.getElementById('pasteForm').submit();" id="savebtn">Save!</button>&nbsp;
+                <a class="hyperlink" href="javascript:previewToggle();" id="togglebtn">Editor</a>&nbsp;&nbsp;&nbsp;
+                    <a class="hyperlink"  href="javascript:this.disabled = true;this.innerText = 'Saving...';document.getElementById('pasteForm').submit();" id="savebtn">Save!</a>&nbsp;&nbsp;&nbsp;
                     <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode();">🌙</button>
               </div>
                 <!-- Navbar content (with the dropdown menu) -->
@@ -58,7 +58,7 @@ $db = json_decode($file, true);
                 
   
     <textarea class="form-control col-sm shadow" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:90vh;padding-top:50px;" id="editor" oninput="updatePreview();" name="paste"></textarea>
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;padding-top:32px;display:none;"></div>
+    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;padding-top:35px;display:none;"></div>
 </form>
             </div>
         </div>
@@ -85,11 +85,11 @@ function previewToggle() {
   if (x.style.display === "none") {
     x.style.display = "block";
     y.style.display = "none";
-    document.getElementById("togglebtn").innerHTML = "Toggle Preview";
+    document.getElementById("togglebtn").innerHTML = "Editor";
   } else {
     x.style.display = "none";
     y.style.display = "block";
-  document.getElementById("togglebtn").innerHTML = "Toggle Editor";
+  document.getElementById("togglebtn").innerHTML = "Preview";
 
   }
 }
