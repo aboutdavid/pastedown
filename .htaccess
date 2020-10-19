@@ -18,7 +18,7 @@ RewriteRule ^/?paste/(.*?)/?$ /paste.php?id=$1 [L]
 
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /paste\.php\?id=([^\&\ ]+)
 RewriteRule ^/?paste\.php$ /paste/%1? [L,R=301]
-
+RewriteRule ^([^\.]+)$ $1.php [NC]
 <Files .htaccess,config.ini>
     order allow,deny
     deny from all
