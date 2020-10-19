@@ -10,6 +10,10 @@ AddOutputFilterByType DEFLATE application/x-javascript
 #Redirect directory/ies using 301
 RedirectMatch 301 /.apache2(.*) /$1
 RewriteEngine On
+
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ /index.php?url=$1
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^/?users/(.*?)/?$ /users.php?name=$1 [L]
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /users\.php\?name=([^\&\ ]+)
+RewriteRule ^/?users\.php$ /users/%1? [L,R=301]
