@@ -11,4 +11,5 @@ AddOutputFilterByType DEFLATE application/x-javascript
 RedirectMatch 301 /.apache2(.*) /$1
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.php?url=$1
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
