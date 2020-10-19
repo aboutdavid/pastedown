@@ -40,6 +40,7 @@ $db = json_decode($file, true);
                 </ul>
                 <!-- Navbar form (inline form) -->
               <div class="navbar-content ml-auto">
+                <button class="btn btn-primary" type="button" onclick="previewToggle();" id="togglebtn">Toggle Preview</button>&nbsp;
                     <button class="btn btn-primary" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';document.getElementById('pasteForm').submit();" id="savebtn">Save!</button>&nbsp;
                     <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode();">🌙</button>
               </div>
@@ -51,20 +52,13 @@ $db = json_decode($file, true);
             </nav>
           
 <form method="POST" action="/api.php" id="pasteForm">
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')">London</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-</div>
-          
+ 
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 
-  <div id="edit-tab" class="tabcontent">
-    <textarea class="form-control col-sm shadow" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:90vh;padding-top:50px;" id="editor" oninput="updatePreview();" name="paste"></textarea>
-  </div>
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;padding-top: 30px;"></div>
   
+    <textarea class="form-control col-sm shadow" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:90vh;padding-top:50px;" id="editor" oninput="updatePreview();" name="paste"></textarea>
+    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;padding-top:32px;display:none;"></div>
 </form>
             </div>
         </div>
@@ -85,18 +79,19 @@ $db = json_decode($file, true);
         function updatePreview(){
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+function previewToggle() {
+  var x = document.getElementById("editor");
+  var y = document.getElementById("preview");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.display = "none";
+    document.getElementById("togglebtn").innerHTML = "Toggle Preview";
+  } else {
+    x.style.display = "none";
+    y.style.display = "block";
+  document.getElementById("togglebtn").innerHTML = "Toggle Editor";
+
   }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
 }
   </script>
 <p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
