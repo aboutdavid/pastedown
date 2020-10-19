@@ -98,15 +98,15 @@ $db = json_decode($file, true);
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
 function previewToggle() {
-  var x = document.getElementById("editor");
-  var y = document.getElementById("preview");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-    y.style.display = "none";
+  var editorid = document.getElementById("editor");
+  var previewid = document.getElementById("preview");
+  if (editorid.style.display === "none") {
+    editorid.style.display = "block";
+    previewid.style.display = "none";
     document.getElementById("togglebtn").innerHTML = "Editor";
   } else {
-    x.style.display = "none";
-    y.style.display = "block";
+    editorid.style.display = "none";
+    previewid.style.display = "block";
   document.getElementById("togglebtn").innerHTML = "Preview";
 
   }

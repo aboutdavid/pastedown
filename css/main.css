@@ -54,3 +54,6 @@ textarea {
   border: 1px solid #ccc;
   border-top: none;
 }
+h1 {
+  text-align:center;
+}
