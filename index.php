@@ -27,7 +27,7 @@ ob_start("sanitize_output");
 ?>
 <!DOCTYPE html>
 <html>
-  <!-- Do metatags -->=
+  <!-- Do metatags -->
   <!-- Primary Meta Tags -->
 <title>Pastedown - a Markdown Pastebin</title>
 <meta name="title" content="Pastedown - a Markdown Pastebin">
@@ -148,7 +148,6 @@ $('#pasteForm').submit(function(event) {
   });
   </script>
   
-<p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
   <script src="/js/prism.js"></script>
 </footer>
 </html>
