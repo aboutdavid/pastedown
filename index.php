@@ -84,7 +84,7 @@ ob_start("sanitize_output");
                 <!-- Navbar form (inline form) -->
               <div class="navbar-content ml-auto">
                 <a class="hyperlink" href="javascript:previewToggle();" id="togglebtn">Editor</a>&nbsp;&nbsp;&nbsp;
-                    <a class="hyperlink"  href="javascript:this.disabled = true;this.innerText = 'Saving...';document.getElementById('pasteForm').submit();" id="savebtn">Save!</a>&nbsp;&nbsp;&nbsp;
+                    <a class="hyperlink"  href="javascript:this.disabled = true;this.innerText = 'Saving...';createPaste();" id="savebtn">Save!</a>&nbsp;&nbsp;&nbsp;
                     <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode();">🌙</button>
               </div>
                 <!-- Navbar content (with the dropdown menu) -->
@@ -137,10 +137,11 @@ function previewToggle() {
   }
 }
 
- function submit(){
+ function createPaste(){
   grecaptcha.ready(function() {
        grecaptcha.execute('<?php echo $ini['recapctha_public']; ?>', {action: 'sumbit'}).then(function(token) {
-         document.getElementById("gcaptcha_form").innerHTML = '<input type="hidden" name="token" value="' + token + '">' + '<input type="hidden" name="action" value="submit">'
+         document.getElementById("gcaptcha_form").innerHTML = '<input type="hidden" name="token" value="' + token + '">';
+         document.getElementById('pasteForm').submit();
 
             });
         });
