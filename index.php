@@ -98,9 +98,11 @@ ob_start("sanitize_output");
  
             <!-- Content wrapper -->
             <div class="content-wrapper">
-                
+                <div id="gcaptcha_form">
+                  
+              </div>
   
-    <textarea class="form-control col-sm shadow" style="outline:none;resize:none;border:none;height:90vh;padding-top:50px;" id="editor" oninput="updatePreview();" name="paste"></textarea>
+    <textarea class="form-control col-sm shadow" style="outline:none;resize:none;border:none;height:90vh;padding-top:50px;" id="editor" oninput="updatePreview();" name="paste" id="paste"></textarea>
     <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:90vh;white-space:normal;padding-top:35px;display:none;"></div>
 </form>
             </div>
@@ -134,18 +136,15 @@ function previewToggle() {
 
   }
 }
-$('#pasteForm').submit(function(event) {
-  event.preventDefault();
-  var email = $('#paste').val();
- 
+
+ function submit(){
   grecaptcha.ready(function() {
        grecaptcha.execute('<?php echo $ini['recapctha_public']; ?>', {action: 'sumbit'}).then(function(token) {
-        $('#pasteForm').prepend('<input type="hidden" name="token" value="' + token + '">');
-        $('#pasteForm').prepend('<input type="hidden" name="action" value="submit">');
-        $('#pasteForm').unbind('submit').submit();
-            });;
+         document.getElementById("gcaptcha_form").innerHTML = '<input type="hidden" name="token" value="' + token + '">' + '<input type="hidden" name="action" value="submit">'
+
+            });
         });
-  });
+ }
   </script>
   
   <script src="/js/prism.js"></script>
