@@ -49,6 +49,7 @@ $db = json_decode($file, true);
                     
                 </div>
             </nav>
+          
 <form method="POST" action="/api.php" id="pasteForm">
   
           
