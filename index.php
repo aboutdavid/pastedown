@@ -112,7 +112,6 @@ ob_start("sanitize_output");
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
-      <script src="/js/axios.js"></script>
 <script type="text/javascript">"not-set"==halfmoon.getPreferredMode()&&halfmoon.toggleDarkMode();</script>
     </header>
 </body>
@@ -135,6 +134,18 @@ function previewToggle() {
 
   }
 }
+$('#pasteForm').submit(function(event) {
+  event.preventDefault();
+  var email = $('#paste').val();
+ 
+  grecaptcha.ready(function() {
+       grecaptcha.execute('<?php echo $ini['recapctha_public']; ?>', {action: 'create_paste'}).then(function(token) {
+        $('#pasteForm').prepend('<input type="hidden" name="token" value="' + token + '">');
+        $('#pasteForm').prepend('<input type="hidden" name="action" value="create_paste">');
+        $('#pasteForm').unbind('submit').submit();
+            });;
+        });
+  });
   </script>
   
 <p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
