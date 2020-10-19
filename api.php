@@ -31,11 +31,20 @@ $n = 7;
         $index = rand(0, strlen($characters) - 1); 
         $randomString .= $characters[$index]; 
     } 
+$y = 12;
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+    $editCode = ''; 
+  
+    for ($i = 0; $i < $y; $i++) { 
+        $index = rand(0, strlen($characters) - 1); 
+        $editCode .= $characters[$index]; 
+    } 
 
 
 $db = json_decode($file, true);
 
-$db[$randomString] = $paste;
+$db[$randomString]["paste"] = $paste;
+$db[$randomString]["edit_code"] = $editCode;
 
 $encoded = json_encode($db);
 
