@@ -2,8 +2,8 @@
 $file = file_get_contents("database.json");
 $paste = $_REQUEST['paste'];
 $ini = parse_ini_file('config.ini');
-if ($paste === null) {
-  echo "empty";
+if ($paste === null or $paste === "") {
+  echo "You can't have an empty paste.";
   die();
 }
 $n = 7;

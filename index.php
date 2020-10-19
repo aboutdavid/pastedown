@@ -63,15 +63,18 @@ $db = json_decode($file, true);
                     </div>
                 </div>
             </nav>
-
+<form method="POST" action="/api.php">
+  
+          
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm shadow" style="resize:none;"><textarea class="form-control" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:80vh;" id="editor" oninput="updatePreview();"></textarea></div>
+    <div class="col-sm shadow" style="resize:none;"><textarea class="form-control" placeholder="Normal textarea for multi-line input" style="outline:none;resize:none;border:none;height:80vh;" id="editor" oninput="updatePreview();" name="paste"></textarea></div>
     <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:80vh;white-space:normal;"></div>
   </div>
 </div>
+</form>
             </div>
         </div>
 
@@ -91,24 +94,6 @@ $db = json_decode($file, true);
         function updatePreview(){
         document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
       }
-    function save(){
-          axios.post('/api.php?paste='+ document.getElementById('editor').value, {
-
-  })
-  .then(function (response) {
-            console.log(response)
-    if (response.data === "empty"){
-      document.getElementById('savebtn').innerHTML = "You can't have a empty paste."
-      setTimeout(function(){ document.getElementById('savebtn').innerHTML = "Save!";savebtn.disabled = false }, 3000);
-      return;
-    }
-    window.location.replace("/paste.php?id="+ response.data)
-  })
-  .catch(function (error) {
-    document.getElementById('savebtn').innerHTML = "Something went wrong..."
-    setTimeout(function(){ document.getElementById('savebtn').innerHTML = "Save!";savebtn.disabled = false}, 3000);
-  });
-        }
   </script>
 <p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
 </footer>
