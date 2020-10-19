@@ -57,8 +57,11 @@ ob_start("sanitize_output");
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/prism.css">
 <!-- Do Recaptcha spam prevention -->
-<script src="https://www.google.com/recaptcha/api.js?render=<?php echo $ini['recapctha_public']; ?>"></script>
-
+<?php
+if ($ini['visibility'] == "public"){
+echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['recaptcha_public'] . '"></script>';
+}
+?>
 <head>
 </head>
 
@@ -103,7 +106,7 @@ ob_start("sanitize_output");
                 <div id="gcaptcha_form"></div>
     <br><br>
     <textarea class="form-control col-sm shadow" style="outline:none;resize:none;border:none;height:100vh;" id="editor" oninput="updatePreview();" name="paste" id="paste"></textarea>
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:100vh;white-space:normal;padding-top:35px;display:none;"></div>
+    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:100vh;white-space:normal;display:none;"></div>
 </form>
             </div>
         </div>
@@ -139,7 +142,7 @@ function previewToggle() {
 
  function createPaste(){
   grecaptcha.ready(function() {
-       grecaptcha.execute('<?php echo $ini['recapctha_public']; ?>', {action: 'sumbit'}).then(function(token) {
+       grecaptcha.execute('<?php echo $ini['recaptcha_public']; ?>', {action: 'sumbit'}).then(function(token) {
          document.getElementById("gcaptcha_form").innerHTML = '<input type="hidden" name="token" value="' + token + '">';
          document.getElementById('pasteForm').submit();
 

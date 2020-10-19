@@ -13,7 +13,7 @@ $action = $_REQUEST['action'];
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,"https://www.google.com/recaptcha/api/siteverify");
 curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('secret' => $ini['recapctha_private'], 'response' => $token)));
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('secret' => $ini['recaptcha_private'], 'response' => $token)));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close($ch);
