@@ -1,7 +1,5 @@
 <?php 
 $ini = parse_ini_file('config.ini');
-$file = file_get_contents("database.json");
-$db = json_decode($file, true);
 function sanitize_output($buffer) {
 
     $search = array(
