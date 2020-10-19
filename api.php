@@ -14,7 +14,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close($ch);
 $arrResponse = json_decode($response, true);
- 
+ echo $response;
 // verify the response
 if($arrResponse["success"] == '1' && $arrResponse["action"] == $action && $arrResponse["score"] >= 0.5) {
 $file = file_get_contents("database.json");
