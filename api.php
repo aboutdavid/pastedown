@@ -2,9 +2,9 @@
 $ini = parse_ini_file('config.ini');
 
 
-$token = $_POST['token'];
-$action = $_POST['action'];
- 
+$token = $_REQUEST['token'];
+$action = $_REQUEST['action'];
+echo $token;
 // call curl to POST request
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,"https://www.google.com/recaptcha/api/siteverify");
