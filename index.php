@@ -139,9 +139,9 @@ $('#pasteForm').submit(function(event) {
   var email = $('#paste').val();
  
   grecaptcha.ready(function() {
-       grecaptcha.execute('<?php echo $ini['recapctha_public']; ?>', {action: 'create_paste'}).then(function(token) {
+       grecaptcha.execute('<?php echo $ini['recapctha_public']; ?>', {action: 'sumbit'}).then(function(token) {
         $('#pasteForm').prepend('<input type="hidden" name="token" value="' + token + '">');
-        $('#pasteForm').prepend('<input type="hidden" name="action" value="create_paste">');
+        $('#pasteForm').prepend('<input type="hidden" name="action" value="submit">');
         $('#pasteForm').unbind('submit').submit();
             });;
         });

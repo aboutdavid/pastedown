@@ -9,6 +9,7 @@ AddOutputFilterByType DEFLATE application/javascript
 AddOutputFilterByType DEFLATE application/x-javascript
 #Redirect directory/ies using 301
 RedirectMatch 301 /.apache2(.*) /$1
+RedirectMatch 301 /config.ini /$1
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
