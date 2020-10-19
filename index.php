@@ -100,9 +100,7 @@ ob_start("sanitize_output");
  
             <!-- Content wrapper -->
             <div class="content-wrapper">
-                <div id="gcaptcha_form">
-                  
-              </div>
+                <div id="gcaptcha_form"></div>
   
     <textarea class="form-control col-sm shadow" style="outline:none;resize:none;border:none;height:100vh;padding-top:50px;" id="editor" oninput="updatePreview();" name="paste" id="paste"></textarea>
     <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:100vh;white-space:normal;padding-top:35px;display:none;"></div>
