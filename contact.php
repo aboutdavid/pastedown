@@ -53,7 +53,7 @@ ob_start("sanitize_output");
   <div class="w-400 mw-full" style="display:block;margin-left:auto;margin-right:auto;">
 <div class="card">
     <h2 class="card-title">
-      Contact me
+      Contact us
     </h2>
   <!-- Name -->
   <div class="form-group">
