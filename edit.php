@@ -2,9 +2,19 @@
 $ini = parse_ini_file('config.ini');
 $file = file_get_contents("database.json");
 $db = json_decode($file, true);
-if (!$db[$_REQUEST['id']]){
+if (!$db["pastes"][$_REQUEST['id']]["content"]){
 http_response_code(404);
 echo "That paste was not found!";
+exit();
+}
+if (!$db["pastes"][$_REQUEST['id']]["edit_code"]){
+http_response_code(403);
+echo "You must provide an edit code!";
+exit();
+}
+if ($db["pastes"][$_REQUEST['id']]["edit_code"] !== ""){
+http_response_code(403);
+echo "Wrong edit code!";
 exit();
 }
 function sanitize_output($buffer) {
