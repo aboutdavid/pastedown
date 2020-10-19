@@ -1,4 +1,5 @@
 <?php
+die();
 $file = file_get_contents("database.json");
 $paste = $_REQUEST['paste'];
 $ini = parse_ini_file('config.ini');

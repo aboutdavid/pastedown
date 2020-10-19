@@ -110,7 +110,7 @@ ob_start("sanitize_output");
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
       <script src="/js/axios.js"></script>
-<script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode()</script>
+<script type="text/javascript">"not-set"==halfmoon.getPreferredMode()&&halfmoon.toggleDarkMode();</script>
     </header>
 </body>
 <footer>
