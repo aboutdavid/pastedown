@@ -1,6 +1,10 @@
 <?php
 $ini = parse_ini_file('config.ini');
-
+$paste = $_REQUEST['paste'];
+if ($paste === null or $paste === "") {
+  echo "You can't have an empty paste.";
+  die();
+}
 
 $token = $_REQUEST['token'];
 $action = $_REQUEST['action'];
@@ -16,11 +20,7 @@ $arrResponse = json_decode($response, true);
 // verify the response
 if($arrResponse["success"] == true && $arrResponse["score"] >= 0.5) {
 $file = file_get_contents("database.json");
-$paste = $_REQUEST['paste'];
-if ($paste === null or $paste === "") {
-  echo "You can't have an empty paste.";
-  die();
-}
+
 $n = 7;
 // Do some string generation
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 

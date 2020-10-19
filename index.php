@@ -120,7 +120,7 @@ ob_start("sanitize_output");
 <footer>
   <script>
         function updatePreview(){
-        document.getElementById('preview').innerHTML = filterXSS(marked(document.getElementById('editor').value));
+        document.getElementById('preview').innerHTML = marked(filterXSS(document.getElementById('editor').value));
       }
 function previewToggle() {
   var editorid = document.getElementById("editor");
