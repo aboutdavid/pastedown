@@ -92,7 +92,7 @@ ob_start("sanitize_output");
                 </div>
             </nav>
           
-<form method="POST" action="/api.php" id="pasteForm">
+<form method="POST" action="/api" id="pasteForm">
  
             <!-- Content wrapper -->
             <div class="content-wrapper">

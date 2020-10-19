@@ -2,6 +2,7 @@
 $ini = parse_ini_file('config.ini');
 $paste = $_REQUEST['paste'];
 if ($paste === null or $paste === "") {
+  http_response_code(400);
   echo "You can't have an empty paste.";
   die();
 }
