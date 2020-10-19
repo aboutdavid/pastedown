@@ -53,6 +53,9 @@ ob_start("sanitize_output");
   <link rel="stylesheet" href="/css/halfmoon.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/prism.css">
+<!-- Do Recaptcha spam prevention -->
+<script src="https://www.google.com/recaptcha/api.js?render=<?php echo $ini['recapctha_public']; ?>"></script>
+<script src="/js/jquery.js"></script>
 
 <head>
 </head>

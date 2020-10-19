@@ -2,7 +2,6 @@
 $ini = parse_ini_file('config.ini');
 die();
 
-define("RECAPTCHA_V3_SECRET_KEY", 'YOUR_SECRET_HERE');
 $token = $_POST['token'];
 $action = $_POST['action'];
  
@@ -10,7 +9,7 @@ $action = $_POST['action'];
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,"https://www.google.com/recaptcha/api/siteverify");
 curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('secret' => RECAPTCHA_V3_SECRET_KEY, 'response' => $token)));
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('secret' => $ini['recapctha_private'], 'response' => $token)));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close($ch);
@@ -48,6 +47,6 @@ header("Location: /paste/" . $randomString);
 exit();
   
 } else {
-echo "We think you might be a robot. Please try again later."
+echo "We think you might be a robot. Please try again later. Your response score is: " . $arrResponse["score"] . ""
 }
 ?>
