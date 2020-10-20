@@ -75,7 +75,7 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
 </div>
     <textarea id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10" class="form-control"></textarea>
               <div class="text-wrap w-150">
-    <div class="col-sm shadow text-justify " id="preview" style="overflow:auto;height:60vh;"></div>
+    <div class="col-sm shadow text-justify" id="preview"></div>
               </div>
 </form>
             </div>

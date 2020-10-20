@@ -87,7 +87,7 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
   </div>
 </div>
     <textarea id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10"><?php echo $db["pastes"][$_REQUEST['id']]["content"]; ?></textarea>
-    <div class="col-sm shadow text-justify" id="preview" style="overflow:auto;"></div>
+    <div class="col-sm shadow text-justify" id="preview"></div>
 </form>
             </div>
         </div>
