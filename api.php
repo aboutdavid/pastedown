@@ -21,7 +21,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 $arrResponse = json_decode($response, true);
 // verify the response
-if($arrResponse["success"] == true && $arrResponse["score"] >= 0.5 && $ini['visibility'] == "public" || $bypass_captcha === false) {
+if($arrResponse["success"] == true && $arrResponse["score"] >= 0.0 && $ini['visibility'] == "public" || $bypass_captcha === false) {
 $file = file_get_contents("database.json");
 
 $n = 7;
@@ -46,10 +46,6 @@ $y = 12;
 $db = json_decode($file, true);
 if ($edit_code) {
   $randomString == $id;
-} else {
-  echo "You must have an edit code!";
-  http_response_code(400);
-  die();
 }
 if ($edit_code !== $db["pastes"][$id]["edit_code"]){
   echo "Wrong edit code!";
