@@ -40,6 +40,7 @@ function sanitize_output($buffer) {
 
 ob_start("sanitize_output");
 ?>
+<?php echo $db["pastes"][$_REQUEST['id']]["content"]; ?>
 <!DOCTYPE html>
 <html>
   <!-- Do metatags -->
@@ -97,23 +98,8 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
                 <a href="/" class="navbar-brand">
                     <img src="https://cdn.glitch.com/65fb0f88-4115-49b0-bcb6-88908e25d1db%2Fnotepad.svg?v=1602954032741" alt="Icon" onerror="this.style.display='none'"><?php echo $ini['brand_name']; ?>
                 </a>
-                <!-- Navbar nav -->
-                <ul class="navbar-nav d-none d-md-flex">
-                    <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
-    
-                  
-                </ul>
-                <!-- Navbar form (inline form) -->
-              <div class="navbar-content ml-auto">
-                <a class="hyperlink" href="javascript:previewToggle();" id="togglebtn">Editor</a>&nbsp;&nbsp;&nbsp;
-                    <a class="hyperlink"  href="javascript:this.disabled = true;this.innerText = 'Saving...';createPaste();" id="savebtn">Save!</a>&nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-primary" type="button" onclick="halfmoon.toggleDarkMode();">🌙</button>
-              </div>
-                <!-- Navbar content (with the dropdown menu) -->
-                <div class="navbar-content d-md-none ml-auto">
-                    <!-- d-md-none = display: none on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
-                    
-                </div>
+           
+
             </nav>
           
 <form method="POST" action="/api" id="pasteForm">
@@ -121,9 +107,14 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <div id="gcaptcha_form"></div>
-  
-    <textarea class="form-control col-sm shadow" style="outline:none;resize:none;border:none;height:100vh;padding-top:50px;" id="editor" oninput="updatePreview();" name="paste" id="paste"></textarea>
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;height:100vh;white-space:normal;padding-top:35px;display:none;"></div>
+    <br><br>
+    <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:-208px;position:absolute;top:50%;">
+  <button class="btn" type="button" onclick="previewToggle();" id="togglebtn">Toggle Preview 👀</button>
+  <button class="btn" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';createPaste();">Save 💾</button>
+  <button class="btn" type="button" onclick="halfmoon.toggleDarkMode();">Toggle Theme 🌙</button>
+</div>
+    <textarea id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10"><?php echo $db["pastes"][$_REQUEST['id']]["content"]; ?></textarea>
+    <div class="col-sm shadow text-justify" id="preview"></div>
 </form>
             </div>
         </div>
@@ -148,18 +139,18 @@ function previewToggle() {
   if (editorid.style.display === "none") {
     editorid.style.display = "block";
     previewid.style.display = "none";
-    document.getElementById("togglebtn").innerHTML = "Editor";
+    document.getElementById("togglebtn").innerHTML = "Toggle Preview 👀";
   } else {
     editorid.style.display = "none";
     previewid.style.display = "block";
-  document.getElementById("togglebtn").innerHTML = "Preview";
+  document.getElementById("togglebtn").innerHTML = "Toggle Editor 📝";
 
   }
 }
 
  function createPaste(){
   grecaptcha.ready(function() {
-       grecaptcha.execute('<?php echo $ini['recapctha_public']; ?>', {action: 'sumbit'}).then(function(token) {
+       grecaptcha.execute('<?php echo $ini['recaptcha_public']; ?>', {action: 'sumbit'}).then(function(token) {
          document.getElementById("gcaptcha_form").innerHTML = '<input type="hidden" name="token" value="' + token + '">';
          document.getElementById('pasteForm').submit();
 
