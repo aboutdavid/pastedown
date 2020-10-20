@@ -10,28 +10,7 @@ http_response_code(404);
 echo "That paste was not found!";
 exit();
 }
-function sanitize_output($buffer) {
 
-    $search = array(
-        '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
-        '/[^\S ]+\</s',     // strip whitespaces before tags, except space
-        '/(\s)+/s',         // shorten multiple whitespace sequences
-        '/<!--(.|\s)*?-->/' // Remove HTML comments
-    );
-
-    $replace = array(
-        '>',
-        '<',
-        '\\1',
-        ''
-    );
-
-    $buffer = preg_replace($search, $replace, $buffer);
-
-    return $buffer;
-}
-
-ob_start("sanitize_output");
 ?>
 
 
@@ -69,6 +48,21 @@ ob_start("sanitize_output");
   <!-- Add main JS files -->
       <script src="https://cdn.jsdelivr.net/npm/web-streams-polyfill@2.0.2/dist/ponyfill.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/streamsaver@2.0.3/StreamSaver.min.js"></script>
+    <script>
+  async function download(url, saveas){
+var response = await fetch(url);
+var res = await response.text();
+    const fileStream = streamSaver.createWriteStream(saveas, {
+    size: 22, // (optional) Will show progress
+    writableStrategy: undefined, // (optional)
+    readableStrategy: undefined  // (optional)
+  })
+
+  new Response(res).body
+    .pipeTo(fileStream)
+    .then(success, error)
+}
+  </script>
 <head>
 </head>
 
@@ -106,9 +100,9 @@ ob_start("sanitize_output");
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <div class="container-fluid">
- <h3>Export as:</h3>
-    <div class="btn-group" role="group" aria-label="Basic example" style="position:absolute;top:50%;right:50%;left:50%;bottom:50%;">
-<button class="btn" type="button" onclick="download('/export/', '<?php echo $_REQUEST['id']; ?>.md')">Markdown</button>
+ <h3 style="position:absolute;top:40%;right:30%;bottom:50%;text-align:center;">Export&nbsp;as:</h3><br>
+    <div class="btn-group" role="group" aria-label="Basic example" style="position:absolute;top:50%;right:50%;left:40%;bottom:50%;">
+<button class="btn" type="button" onclick="download('/raw/<?php echo $_REQUEST['id']; ?>', '<?php echo $_REQUEST['id']; ?>.md')">Markdown</button>
       
 </div>
 </div>
@@ -121,26 +115,11 @@ ob_start("sanitize_output");
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
-      <script src="/js/axios.js"></script>
 <script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode()</script>  
     </header>
 </body>
 <footer>
-  <script>
-  async function download(url, saveas){
-var response = await fetch(url);
-var res = await response.text();
-    const fileStream = streamSaver.createWriteStream(saveas, {
-    size: 22, // (optional) Will show progress
-    writableStrategy: undefined, // (optional)
-    readableStrategy: undefined  // (optional)
-  })
 
-  new Response(res).body
-    .pipeTo(fileStream)
-    .then(success, error)
-}
-  </script>
   <script src="/js/prism.js"></script>
 <p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
 </footer>

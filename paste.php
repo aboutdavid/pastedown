@@ -106,7 +106,7 @@ ob_start("sanitize_output");
  
     <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:250px;margin-top:-175px;position:absolute;top:50%;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
     <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:80px;position:absolute;top:50%;">
-<button class="btn" type="button">Export</button>
+<button class="btn" type="button" onclick="window.location.replace('/export/<?php echo $_REQUEST['id']; ?>')">Export</button>
       
 </div>
 </div>
