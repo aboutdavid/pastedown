@@ -69,12 +69,12 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
                 <div id="gcaptcha_form"></div>
     <br><br>
     <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:-208px;position:absolute;top:50%;">
-  <button class="btn" type="button" onclick="previewToggle();">Toggle Editor 📝</button>
+  <button class="btn" type="button" onclick="previewToggle();" id="togglebtn">Toggle Preview 👀</button>
   <button class="btn" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';createPaste();">Save 💾</button>
   <button class="btn" type="button" onclick="halfmoon.toggleDarkMode();">Toggle Theme 🌙</button>
 </div>
-    <textarea  id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10"></textarea>
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;white-space:normal;display:none;height:250px;margin-top:-175px;position:absolute;top:50%;"></div>
+    <textarea id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10"></textarea>
+    <div class="col-sm shadow text-justify" id="preview"></div>
 </form>
             </div>
         </div>
@@ -85,7 +85,6 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
-      <script src="/js/textfit.js"></script>
 <script type="text/javascript">"not-set"==halfmoon.getPreferredMode()&&halfmoon.toggleDarkMode();</script>
     </header>
 </body>
@@ -100,11 +99,11 @@ function previewToggle() {
   if (editorid.style.display === "none") {
     editorid.style.display = "block";
     previewid.style.display = "none";
-    document.getElementById("togglebtn").innerHTML = "Editor";
+    document.getElementById("togglebtn").innerHTML = "Toggle Preview 👀";
   } else {
     editorid.style.display = "none";
     previewid.style.display = "block";
-  document.getElementById("togglebtn").innerHTML = "Preview";
+  document.getElementById("togglebtn").innerHTML = "Toggle Editor 📝";
 
   }
 }
@@ -118,7 +117,6 @@ function previewToggle() {
             });
         });
  }
-    textFit(document.querySelector("#preview"));
   </script>
   
   <script src="/js/prism.js"></script>

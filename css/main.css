@@ -7,7 +7,10 @@
   margin-top: -175px;
   position: absolute;
   top: 50%;
-  width: 300vh;
+  width: 100%;
+}
+#preview {
+  padding-left:15px;padding-right:15px;word-break:break-all;white-space:normal;display:none;height:250px;margin-top:-175px;position:absolute;top:50%;
 }
 .shadow {
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),

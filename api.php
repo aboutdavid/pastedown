@@ -1,12 +1,13 @@
 <?php
 $ini = parse_ini_file('config.ini');
 $paste = $_REQUEST['paste'];
+$id = $_REQUEST['id'];
+$edit_code = $_REQUEST['edit_code'];
 if ($paste === null or $paste === "") {
   http_response_code(400);
   echo "You can't have an empty paste.";
   die();
 }
-
 $token = $_REQUEST['token'];
 $action = $_REQUEST['action'];
 // call curl to POST request
@@ -42,6 +43,9 @@ $y = 12;
 
 
 $db = json_decode($file, true);
+if ($edit_code && $edit_code == $id) {
+  $randomString = $edit_code;
+}
 
 $db["pastes"][$randomString]["content"] = $paste;
 $db["pastes"][$randomString]["edit_code"] = $editCode;
