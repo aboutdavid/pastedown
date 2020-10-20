@@ -47,6 +47,9 @@ if ($edit_code && $edit_code !== $db["pastes"][$id]["edit_code"]){
   echo "Wrong edit code!";
   http_response_code(403);
   die();
+} else {
+  $randomString = $id;
+  $editCode = $editCode;
 }
 $db["pastes"][$randomString]["content"] = $paste;
 $db["pastes"][$randomString]["edit_code"] = $editCode;
