@@ -89,8 +89,8 @@ echo '<div style="height:250px;margin-top:-208px;position:absolute;top:90%;paddi
     }
   
    ?>
-    <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:30vh;margin-top:-175px;position:absolute;top:60%;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
-    <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:80px;position:absolute;top:10%;">
+    <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:80vh;margin-top:-175px;position:absolute;top:40%;overflow:auto;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div>
+    <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:80px;position:absolute;top:-10%;">
 <button class="btn" type="button" onclick="window.location.replace('/export/<?php echo $_REQUEST['id']; ?>')">Export</button>
 <button class="btn" type="button" onclick="window.location.replace('/edit?id=<?php echo $_REQUEST['id']; ?>')">Edit</button>
       
