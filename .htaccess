@@ -16,20 +16,5 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^/?paste/(.*?)/?$ /paste.php?id=$1 [L]
-
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /paste\.php\?id=([^\&\ ]+)
-RewriteRule ^/?paste\.php$ /paste/%1? [L,R=301]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
-
-# Raw Rewrite
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^/?raw/(.*?)/?$ /raw.php?id=$1 [L]
-
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /raw\.php\?id=([^\&\ ]+)
-RewriteRule ^/?raw\.php$ /raw/%1? [L,R=301]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^/?export/(.*?)/?$ /export.php?id=$1 [L]
