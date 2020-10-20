@@ -9,9 +9,29 @@ if (!$db["pastes"][$_REQUEST['id']]["content"]){
 http_response_code(404);
 echo "That paste was not found!";
 exit();
-  
+}
+function sanitize_output($buffer) {
+
+    $search = array(
+        '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
+        '/[^\S ]+\</s',     // strip whitespaces before tags, except space
+        '/(\s)+/s',         // shorten multiple whitespace sequences
+        '/<!--(.|\s)*?-->/' // Remove HTML comments
+    );
+
+    $replace = array(
+        '>',
+        '<',
+        '\\1',
+        ''
+    );
+
+    $buffer = preg_replace($search, $replace, $buffer);
+
+    return $buffer;
 }
 
+ob_start("sanitize_output");
 ?>
 
 
@@ -84,15 +104,13 @@ exit();
             <div class="content-wrapper">
                 <div class="container-fluid">
      <?php 
-    if ($db["pastes"][$_REQUEST['id']]["views"] == 0){
-echo '<div style="height:250px;margin-top:-208px;position:absolute;top:40%;"><p>To edit your pastedown, use the this edit code:</p><code class="code"><a href="/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '">' . $ini['domain'] .'/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '</a></code><p> or use this edit code:</p><code class="code">' . $db["pastes"][$_REQUEST['id']]["edit_code"] . '</code><p><b>Note:</b> Write the link and/or edit code down because you will never see it again.</p></div>'; 
+    if ($_REQUEST['ec']){
+echo '<div style="height:250px;margin-top:-208px;position:absolute;top:40%;"><p>To edit your pastedown, use the following link:</p><br><code class="code">/edit?edit_code=' . $_REQUEST['ec'] . "&id=" . $_REQUEST['id'] . '</code></div>'; 
     }
-  
    ?>
-    <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:30vh;margin-top:-175px;position:absolute;top:45%;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
-    <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:80px;position:absolute;top:37%;">
+    <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:250px;margin-top:-175px;position:absolute;top:50%;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
+    <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:80px;position:absolute;top:50%;">
 <button class="btn" type="button" onclick="window.location.replace('/export/<?php echo $_REQUEST['id']; ?>')">Export</button>
-<button class="btn" type="button" onclick="window.location.replace('/edit?id=<?php echo $_REQUEST['id']; ?>')">Edit</button>
       
 </div>
 </div>
@@ -114,14 +132,5 @@ echo '<div style="height:250px;margin-top:-208px;position:absolute;top:40%;"><p>
 <footer>
   <script src="/js/prism.js"></script>
 <p>&copy; 2020-<?php echo date("Y"); ?>, <?php echo $ini['brand_name']; ?>. All rights reserved.</p>
-  <?php 
-  // Change view counter
-   $db["pastes"][$_REQUEST['id']]["views"] == $db["pastes"][$_REQUEST['id']]["views"] += 1;
-  $encodejson = json_encode($db);
-
-$fileobj = fopen("database.json", 'w');
-fwrite($fileobj,$encodejson);
-fclose($fileobj);
-  ?>
 </footer>
 </html>

@@ -2,6 +2,7 @@
 $ini = parse_ini_file('config.ini');
 $paste = $_REQUEST['paste'];
 $id = $_REQUEST['id'];
+$bypass_captcha = true;
 $edit_code = $_REQUEST['edit_code'];
 if ($paste === null or $paste === "") {
   http_response_code(400);
@@ -20,7 +21,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 $arrResponse = json_decode($response, true);
 // verify the response
-if($arrResponse["success"] == true && $arrResponse["score"] >= 0.0 && $ini['visibility'] == "public") {
+if($arrResponse["success"] == true && $arrResponse["score"] >= 0.5 && $ini['visibility'] == "public" || $bypass_captcha === false) {
 $file = file_get_contents("database.json");
 
 $n = 7;
@@ -43,31 +44,27 @@ $y = 12;
 
 
 $db = json_decode($file, true);
-if ($edit_code && $edit_code !== $db["pastes"][$id]["edit_code"]){
+if ($edit_code) {
+  $randomString == $id;
+} else {
+  echo "You must have an edit code!";
+  http_response_code(400);
+  die();
+}
+if ($edit_code !== $db["pastes"][$id]["edit_code"]){
   echo "Wrong edit code!";
   http_response_code(403);
   die();
-} else {
-$db["pastes"][$_REQUEST['id']]["content"] = $paste;
-$db["pastes"][$_REQUEST['id']]["views"] = 0;
-$encoded = json_encode($db);
-
-$fileobj = fopen("database.json", 'w');
-fwrite($fileobj,$encoded);
-fclose($fileobj);
-header("Location: /paste/" . $_REQUEST['id']);
-die();
 }
 $db["pastes"][$randomString]["content"] = $paste;
 $db["pastes"][$randomString]["edit_code"] = $editCode;
-$db["pastes"][$randomString]["views"] = 0;
 
 $encoded = json_encode($db);
 
 $fileobj = fopen("database.json", 'w');
 fwrite($fileobj,$encoded);
 fclose($fileobj);
-header("Location: /paste/" . $randomString);
+header("Location: /paste/" . $randomString .  "?ec=" . $editCode);
 exit();
   
 } else {
