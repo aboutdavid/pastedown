@@ -112,6 +112,10 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
   <button class="btn" type="button" onclick="previewToggle();" id="togglebtn">Toggle Preview 👀</button>
   <button class="btn" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';createPaste();">Save 💾</button>
   <button class="btn" type="button" onclick="halfmoon.toggleDarkMode();">Toggle Theme 🌙</button>
+  <div class="form-group">
+  <input type="text" class="form-control" name="edit_code" id="edit_code" placeholder="Full name" required="required" value="<?php echo $_REQUEST['edit_code']; ?>">
+  <input type="text" class="form-control" name="edit_code" id="edit_code" placeholder="Full name" required="required" value="<?php echo $_REQUEST['edit_code']; ?>">
+  </div>
 </div>
     <textarea id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10"><?php echo $db["pastes"][$_REQUEST['id']]["content"]; ?></textarea>
     <div class="col-sm shadow text-justify" id="preview"></div>
@@ -151,7 +155,8 @@ function previewToggle() {
  function createPaste(){
   grecaptcha.ready(function() {
        grecaptcha.execute('<?php echo $ini['recaptcha_public']; ?>', {action: 'sumbit'}).then(function(token) {
-         document.getElementById("gcaptcha_form").innerHTML = '<input type="hidden" name="token" value="' + token + '">';
+         var id = '<input type="hidden" name="edit_code" value="<?php echo $_REQUEST['id']; ?>">'
+         document.getElementById("gcaptcha_form").innerHTML = '<input type="hidden" name="token" value="' + token + '">' + id;
          document.getElementById('pasteForm').submit();
 
             });
