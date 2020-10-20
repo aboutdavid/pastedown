@@ -2,6 +2,7 @@
 $ini = parse_ini_file('config.ini');
 $paste = $_REQUEST['paste'];
 $id = $_REQUEST['id'];
+$bypass_captcha = true;
 $edit_code = $_REQUEST['edit_code'];
 if ($paste === null or $paste === "") {
   http_response_code(400);
@@ -20,7 +21,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 $arrResponse = json_decode($response, true);
 // verify the response
-if($arrResponse["success"] == true && $arrResponse["score"] >= 0.5 && $ini['visibility'] == "public") {
+if($arrResponse["success"] == true && $arrResponse["score"] >= 0.5 && $ini['visibility'] == "public" || $bypass_captcha === false) {
 $file = file_get_contents("database.json");
 
 $n = 7;
@@ -52,7 +53,7 @@ if ($edit_code) {
 }
 if ($edit_code == $db["pastes"][$id]["edit_code"]){
   echo "Wrong edit code!";
-    http_response_code(401);
+  http_response_code(403);
   die();
 }
 $db["pastes"][$randomString]["content"] = $paste;
@@ -68,7 +69,10 @@ exit();
   
 } else {
 echo "We think you might be a robot. Please try again later.";
-http_response_code(400);
-  die();
+if ($arrResponse["score"]){
+  echo " Robot score: " . $arrResponse["score"] . "/1.0 (1.0 is most likely a human and 0.0 is most likely a bot. The mi)";
+}
+http_response_code(429);
+die();
 }
 ?>
