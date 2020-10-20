@@ -10,6 +10,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 #Redirect directory/ies using 301
 RedirectMatch 301 /.apache2(.*) /$1
 RedirectMatch 301 /config.ini /$1
+
 RewriteEngine On
 # Paste rewrite
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -22,7 +23,13 @@ RewriteRule ^/?paste\.php$ /paste/%1? [L,R=301]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
-<Files .htaccess,config.ini>
-    order allow,deny
-    deny from all
-</Files>
+# Raw Rewrite
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^/?raw/(.*?)/?$ /raw.php?id=$1 [L]
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /raw\.php\?id=([^\&\ ]+)
+RewriteRule ^/?raw\.php$ /raw/%1? [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
