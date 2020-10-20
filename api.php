@@ -1,9 +1,6 @@
 <?php
 $ini = parse_ini_file('config.ini');
 $paste = $_REQUEST['paste'];
-$id = $_REQUEST['id'];
-$bypass_captcha = true;
-$edit_code = $_REQUEST['edit_code'];
 if ($paste === null or $paste === "") {
   http_response_code(400);
   echo "You can't have an empty paste.";
@@ -33,34 +30,20 @@ $n = 7;
         $index = rand(0, strlen($characters) - 1); 
         $randomString .= $characters[$index]; 
     } 
-$y = 12;
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
-    $editCode = ''; 
-  
-    for ($i = 0; $i < $y; $i++) { 
-        $index = rand(0, strlen($characters) - 1); 
-        $editCode .= $characters[$index]; 
-    } 
+
 
 
 $db = json_decode($file, true);
-if ($edit_code) {
-  $randomString == $id;
-}
-if ($edit_code !== $db["pastes"][$id]["edit_code"]){
-  echo "Wrong edit code!";
-  http_response_code(403);
-  die();
-}
+
 $db["pastes"][$randomString]["content"] = $paste;
-$db["pastes"][$randomString]["edit_code"] = $editCode;
+$db["pastes"][$randomString]["views"] = 0;
 
 $encoded = json_encode($db);
 
 $fileobj = fopen("database.json", 'w');
 fwrite($fileobj,$encoded);
 fclose($fileobj);
-header("Location: /paste/" . $randomString .  "?ec=" . $editCode);
+header("Location: /paste/" . $randomString);
 exit();
   
 } else {

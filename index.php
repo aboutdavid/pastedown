@@ -74,7 +74,7 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
   <button class="btn" type="button" onclick="halfmoon.toggleDarkMode();">Toggle Theme 🌙</button>
 </div>
     <textarea id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10" class="form-control"></textarea>
-    <div class="col-sm shadow text-justify" id="preview"></div>
+    <div class="col-sm shadow text-justify" id="preview" style="overflow: scroll;"></div>
 </form>
             </div>
         </div>
