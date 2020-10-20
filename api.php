@@ -2,6 +2,7 @@
 $ini = parse_ini_file('config.ini');
 $paste = $_REQUEST['paste'];
 $id = $_REQUEST['id'];
+$slug = $_REQUEST['slug'];
 $edit_code = $_REQUEST['edit_code'];
 if ($paste === null or $paste === "") {
   http_response_code(400);
@@ -41,7 +42,9 @@ $y = 12;
         $editCode .= $characters[$index]; 
     } 
 
-
+if ($slug && !$db["pastes"][$slug]){
+  
+}
 $db = json_decode($file, true);
 if ($edit_code && $edit_code !== $db["pastes"][$id]["edit_code"]){
   echo "Wrong edit code!";
