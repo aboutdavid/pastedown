@@ -41,6 +41,7 @@ $y = 12;
         $editCode .= $characters[$index]; 
     } 
 
+
 $db = json_decode($file, true);
 if ($edit_code && $edit_code !== $db["pastes"][$id]["edit_code"]){
   echo "Wrong edit code!";
