@@ -60,7 +60,7 @@ $encoded = json_encode($db);
 $fileobj = fopen("database.json", 'w');
 fwrite($fileobj,$encoded);
 fclose($fileobj);
-header("Location: /paste/" . $randomString .  "?ec=" . $editCode);
+header("Location: /paste/" . $randomString);
 exit();
   
 } else {
