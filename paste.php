@@ -84,7 +84,7 @@ exit();
                 <div class="container-fluid">
      <?php 
     if ($db["pastes"][$_REQUEST['id']]["views"] == 0){
-echo '<div style="height:250px;margin-top:-208px;position:absolute;top:40%;"><p>To edit your pastedown, use the following link:</p><br><code class="code"><a href="/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '">/edit?' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '</a></code></div>'; 
+echo '<div style="height:250px;margin-top:-208px;position:absolute;top:40%;"><p>To edit your pastedown, use the think below. Write it down because you will never see it again.</p><br><code class="code"><a href="/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '">' . $ini['domain'] .'/edit?' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '</a></code></div>'; 
     }
   
    ?>
