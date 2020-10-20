@@ -103,9 +103,26 @@ ob_start("sanitize_output");
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <div class="container-fluid">
-  <div class="row">
+ 
     <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:250px;margin-top:-175px;position:absolute;top:50%;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
+    <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:80px;position:absolute;top:50%;">
+      <!-- Export Dropdown -->
+      <div class="dropdown">
+  <button class="btn" data-toggle="dropdown" type="button" id="dropdown-toggle-btn-1" aria-haspopup="true" aria-expanded="false">
+    Click me <i class="fa fa-angle-down ml-5" aria-hidden="true"></i> <!-- ml-5 = margin-left: 0.5rem (5px) -->
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdown-toggle-btn-1">
+    <h6 class="dropdown-header">Header</h6>
+    <a href="#" class="dropdown-item">Link 1</a>
+    <a href="#" class="dropdown-item">Link 2</a>
+    <div class="dropdown-divider"></div>
+    <div class="dropdown-content">
+      <button class="btn btn-block" type="button">Button</button>
+    </div>
   </div>
+</div>
+      <!-- -->
+</div>
 </div>
             </div>
         </div>
