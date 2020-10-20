@@ -100,8 +100,8 @@ var res = await response.text();
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <div class="container-fluid">
- <h3 style="position:absolute;top:40%;right:30%;bottom:50%;text-align:center;">Export&nbsp;as:</h3><br>
-    <div class="btn-group" role="group" aria-label="Basic example" style="position:absolute;top:50%;right:50%;left:40%;bottom:50%;">
+ <h3 style="position:absolute;top:40%;bottom:50%;right:50%;left:50%;">Export&nbsp;as:</h3><br>
+    <div class="btn-group" role="group" aria-label="Basic example" style="top:50%;right:50%;left:50%;bottom:50%;">
 <button class="btn" type="button" onclick="download('/raw/<?php echo $_REQUEST['id']; ?>', '<?php echo $_REQUEST['id']; ?>.md')">Markdown</button>
       
 </div>

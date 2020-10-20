@@ -107,6 +107,7 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
             <div class="content-wrapper">
                 <div id="gcaptcha_form"></div>
     <br><br>
+
     <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:-208px;position:absolute;top:50%;">
   <button class="btn" type="button" onclick="previewToggle();" id="togglebtn">Toggle Preview 👀</button>
   <button class="btn" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';createPaste();">Save 💾</button>
@@ -161,11 +162,3 @@ function previewToggle() {
   <script src="/js/prism.js"></script>
 </footer>
 </html>
-<?php 
-
-if ($_REQUEST['edit_code']){
-echo "/edit?edit_code=" . $_REQUEST['ec'] . "&id=" . $_REQUEST['id']; 
-}
-
-
-?>

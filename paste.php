@@ -103,7 +103,11 @@ ob_start("sanitize_output");
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <div class="container-fluid">
- 
+     <?php 
+    if ($_REQUEST['ec']){
+echo '<div style="height:250px;margin-top:-208px;position:absolute;top:40%;"><p>To edit your pastedown, use the following link:</p><br><code class="code">/edit?edit_code=' . $_REQUEST['ec'] . "&id=" . $_REQUEST['id'] . '</code></div>'; 
+    }
+   ?>
     <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:250px;margin-top:-175px;position:absolute;top:50%;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
     <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:80px;position:absolute;top:50%;">
 <button class="btn" type="button" onclick="window.location.replace('/export/<?php echo $_REQUEST['id']; ?>')">Export</button>
