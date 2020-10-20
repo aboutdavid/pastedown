@@ -47,16 +47,6 @@ if ($edit_code && $edit_code !== $db["pastes"][$id]["edit_code"]){
   echo "Wrong edit code!";
   http_response_code(403);
   die();
-} else {
-$db["pastes"][$_REQUEST['id']]["content"] = $paste;
-$db["pastes"][$_REQUEST['id']]["views"] = 0;
-$encoded = json_encode($db);
-
-$fileobj = fopen("database.json", 'w');
-fwrite($fileobj,$encoded);
-fclose($fileobj);
-header("Location: /paste/" . $_REQUEST['id']);
-die();
 }
 $db["pastes"][$randomString]["content"] = $paste;
 $db["pastes"][$randomString]["edit_code"] = $editCode;
@@ -68,7 +58,7 @@ $fileobj = fopen("database.json", 'w');
 fwrite($fileobj,$encoded);
 fclose($fileobj);
 header("Location: /paste/" . $randomString);
-exit();
+
   
 } else {
 echo "We think you might be a robot. Please try again later.";
