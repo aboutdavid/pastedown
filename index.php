@@ -1,27 +1,5 @@
 <?php 
 $ini = parse_ini_file('config.ini');
-function sanitize_output($buffer) {
-
-    $search = array(
-        '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
-        '/[^\S ]+\</s',     // strip whitespaces before tags, except space
-        '/(\s)+/s',         // shorten multiple whitespace sequences
-        '/<!--(.|\s)*?-->/' // Remove HTML comments
-    );
-
-    $replace = array(
-        '>',
-        '<',
-        '\\1',
-        ''
-    );
-
-    $buffer = preg_replace($search, $replace, $buffer);
-
-    return $buffer;
-}
-
-ob_start("sanitize_output");
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,7 +73,7 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
   <button class="btn" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';createPaste();">Save 💾</button>
   <button class="btn" type="button" onclick="halfmoon.toggleDarkMode();">Toggle Theme 🌙</button>
 </div>
-    <textarea class="form-control col-sm shadow" style="outline:none;resize:none;border:none;display:block;height:250px;margin-top:-175px;position:absolute;top:50%;width:300vh;" id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10"></textarea>
+    <textarea  id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10"></textarea>
     <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;white-space:normal;display:none;height:250px;margin-top:-175px;position:absolute;top:50%;"></div>
 </form>
             </div>
@@ -107,6 +85,7 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
+      <script src="/js/textfit.js"></script>
 <script type="text/javascript">"not-set"==halfmoon.getPreferredMode()&&halfmoon.toggleDarkMode();</script>
     </header>
 </body>
@@ -139,6 +118,7 @@ function previewToggle() {
             });
         });
  }
+    textFit(document.querySelector("#preview"));
   </script>
   
   <script src="/js/prism.js"></script>
