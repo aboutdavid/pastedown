@@ -7,12 +7,12 @@ http_response_code(404);
 echo "That paste was not found!";
 exit();
 }
-if (!$db["pastes"][$_REQUEST['id']]["edit_code"]){
+if (!$_REQUEST['edit_code']){
 http_response_code(400);
 echo "You must provide an edit code!";
 exit();
 }
-if ($db["pastes"][$_REQUEST['id']]["edit_code"] !== $_REQUEST['edit_code'){
+if ($db["pastes"][$_REQUEST['id']]["edit_code"] !== $_REQUEST['edit_code']){
 http_response_code(403);
 echo "Wrong edit code!";
 exit();

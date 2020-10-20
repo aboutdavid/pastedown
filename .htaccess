@@ -18,3 +18,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^/?paste/(.*?)/?$ /paste.php?id=$1 [L]
 RewriteRule ^/?raw/(.*?)/?$ /raw.php?id=$1 [L]
 RewriteRule ^/?export/(.*?)/?$ /export.php?id=$1 [L]
+RewriteRule ^/?export/(.*?)/?$ /export.php?id=$1 [L]
