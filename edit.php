@@ -40,7 +40,6 @@ function sanitize_output($buffer) {
 
 ob_start("sanitize_output");
 ?>
-<?php echo $db["pastes"][$_REQUEST['id']]["content"]; ?>
 <!DOCTYPE html>
 <html>
   <!-- Do metatags -->
@@ -102,7 +101,7 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
 
             </nav>
           
-<form method="POST" action="/api" id="pasteForm">
+<form method="POST" action="/api?edit_code=<?php echo $_REQUEST['edit_code']; ?>&id=<?php echo $_REQUEST['id']; ?>" id="pasteForm">
  
             <!-- Content wrapper -->
             <div class="content-wrapper">

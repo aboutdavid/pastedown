@@ -43,13 +43,18 @@ $y = 12;
 
 
 $db = json_decode($file, true);
-if ($edit_code && $edit_code == $id) {
+if ($edit_code) {
   $randomString == $id;
 } else {
-  echo "Wrong edit code!";
+  echo "You must have an edit code!";
+  http_response_code(400);
   die();
 }
-
+if ($edit_code == $db["pastes"][$id]["edit_code"]){
+  echo "Wrong edit code!";
+    http_response_code(401);
+  die();
+}
 $db["pastes"][$randomString]["content"] = $paste;
 $db["pastes"][$randomString]["edit_code"] = $editCode;
 
