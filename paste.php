@@ -85,14 +85,13 @@ exit();
                 <div class="container-fluid">
      <?php 
     if ($db["pastes"][$_REQUEST['id']]["views"] == 0){
-echo '<div style="height:250px;margin-top:-60px;position:absolute;top:90%;padding-left:5px;">To edit your pastedown, use the this edit link: <code class="code"><a href="/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '">' . $ini['domain'] .'/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '</a></code><br> or use this edit code:<code class="code">' . $db["pastes"][$_REQUEST['id']]["edit_code"] . '</code><br><b>Note:</b> Write the link and/or edit code down because you will never see it again. We use edit codes so you can edit your pastedown without a login.</div>'; 
+echo '<div style="height:250px;margin-top:-60px;position:absolute;top:90%;padding-left:5px;">To edit your pastedown, use the this edit code:<code class="code"><a href="/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '">' . $ini['domain'] .'/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '</a></code><br> or use this edit code:<code class="code">' . $db["pastes"][$_REQUEST['id']]["edit_code"] . '</code><br><b>Note:</b> Write the link and/or edit code down because you will never see it again. We use edit codes so you can edit your pastedown without a login.</div>'; 
     }
    ?>
     <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:60vh;margin-top:-175px;position:absolute;top:40%;overflow:auto;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div>
     <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:80px;position:absolute;top:-10%;">
 <button class="btn" type="button" onclick="window.location.replace('/export/<?php echo $_REQUEST['id']; ?>')">Export</button>
 <button class="btn" type="button" onclick="window.location.replace('/edit?id=<?php echo $_REQUEST['id']; ?>')">Edit</button>
-<button class="btn" type="button" onclick="window.location.replace('/raw/<?php echo $_REQUEST['id']; ?>')">Raw</button>
       
 </div>
 </div>
@@ -105,6 +104,7 @@ echo '<div style="height:250px;margin-top:-60px;position:absolute;top:90%;paddin
   <script src="/js/main.js"></script>
   <script src="/js/marked.js"></script>
       <script src="/js/xss.js"></script>
+      <script src="/js/axios.js"></script>
 <script type="text/javascript">"light-mode"==halfmoon.getPreferredMode()||"dark-mode"!=halfmoon.getPreferredMode()&&"not-set"!=halfmoon.getPreferredMode()||halfmoon.toggleDarkMode()</script>      <script>
 
       </script>
