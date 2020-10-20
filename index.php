@@ -72,7 +72,6 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
   <button class="btn" type="button" onclick="previewToggle();" id="togglebtn">Toggle Preview 👀</button>
   <button class="btn" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';createPaste();">Save 💾</button>
   <button class="btn" type="button" onclick="halfmoon.toggleDarkMode();">Toggle Theme 🌙</button>
-  <input type="text" class="form-control" name="edit_code" id="edit_code" placeholder="Edit code" required="required"  value="<?php echo $_REQUEST['edit_code']; ?>">
 </div>
     <textarea id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10" class="form-control"></textarea>
               <div class="text-wrap w-150">
