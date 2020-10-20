@@ -83,7 +83,7 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
   <button class="btn" type="button" onclick="halfmoon.toggleDarkMode();">Toggle Theme 🌙</button>
   <div class="form-group">
   <input type="text" class="form-control" name="edit_code" id="edit_code" placeholder="Edit code" required="required"  value="<?php echo $_REQUEST['edit_code']; ?>">
-  &nbsp;<input type="text" class="form-control" required="required" name="id" type="hidden" style="height:250px;margin-top:80px;position:absolute;top:37%;" value="<?php echo $_REQUEST['id']; ?>">
+  &nbsp;<input type="hidden" class="form-control" required="required" name="id" type="hidden"  value="<?php echo $_REQUEST['id']; ?>">
   </div>
 </div>
     <textarea id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10"><?php echo $db["pastes"][$_REQUEST['id']]["content"]; ?></textarea>

@@ -85,11 +85,11 @@ exit();
                 <div class="container-fluid">
      <?php 
     if ($db["pastes"][$_REQUEST['id']]["views"] == 0){
-echo '<div style="height:250px;margin-top:-208px;position:absolute;top:40%;"><p>To edit your pastedown, use the link and/or edit code below. Write it down because you will never see it again.</p><br><code class="code"><a href="/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '">' . $ini['domain'] .'/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '</a></code></div>'; 
+echo '<div style="height:250px;margin-top:-208px;position:absolute;top:40%;"><p>To edit your pastedown, use the this edit code:</p><code class="code"><a href="/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '">' . $ini['domain'] .'/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '</a></code><p> or use this edit code:</p><code class="code">' . $db["pastes"][$_REQUEST['id']]["edit_code"] . '</code><p><b>Note:</b> Write the link and/or edit code down because you will never see it again.</p></div>'; 
     }
   
    ?>
-    <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:30vh;margin-top:-175px;position:absolute;top:50%;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
+    <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:30vh;margin-top:-175px;position:absolute;top:45%;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
     <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:80px;position:absolute;top:37%;">
 <button class="btn" type="button" onclick="window.location.replace('/export/<?php echo $_REQUEST['id']; ?>')">Export</button>
 <button class="btn" type="button" onclick="window.location.replace('/edit?id=<?php echo $_REQUEST['id']; ?>')">Edit</button>
