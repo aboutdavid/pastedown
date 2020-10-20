@@ -51,7 +51,7 @@ if ($edit_code) {
   http_response_code(400);
   die();
 }
-if ($edit_code == $db["pastes"][$id]["edit_code"]){
+if ($edit_code !== $db["pastes"][$id]["edit_code"]){
   echo "Wrong edit code!";
   http_response_code(403);
   die();
@@ -70,7 +70,7 @@ exit();
 } else {
 echo "We think you might be a robot. Please try again later.";
 if ($arrResponse["score"]){
-  echo " Robot score: " . $arrResponse["score"] . "/1.0 (1.0 is most likely a human and 0.0 is most likely a bot. The mi)";
+  echo " Robot score: " . $arrResponse["score"] . "/1.0 (1.0 is most likely a human and 0.0 is most likely a bot. The minimum threshold to use our site is 0.5)";
 }
 http_response_code(429);
 die();

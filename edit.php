@@ -161,3 +161,11 @@ function previewToggle() {
   <script src="/js/prism.js"></script>
 </footer>
 </html>
+<?php 
+
+if ($_REQUEST['edit_code']){
+echo "/edit?edit_code=" . $_REQUEST['ec'] . "&id=" . $_REQUEST['id']; 
+}
+
+
+?>
