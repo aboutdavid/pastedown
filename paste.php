@@ -92,7 +92,7 @@ echo '<div style="height:250px;margin-top:-60px;position:absolute;top:90%;paddin
     <div class="btn-group" role="group" aria-label="Basic example" style="height:250px;margin-top:80px;position:absolute;top:-10%;">
 <button class="btn" type="button" onclick="window.location.replace('/export/<?php echo $_REQUEST['id']; ?>')">Export</button>
 <button class="btn" type="button" onclick="window.location.replace('/edit?id=<?php echo $_REQUEST['id']; ?>')">Edit</button>
-      
+<button class="btn" type="button" onclick="window.location.replace('/raw/<?php echo $_REQUEST['id']; ?>')">Raw</button>
 </div>
 </div>
             </div>
