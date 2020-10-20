@@ -9,7 +9,6 @@ if (!$db["pastes"][$_REQUEST['id']]["content"]){
 http_response_code(404);
 echo "That paste was not found!";
 exit();
-  
 }
 
 ?>

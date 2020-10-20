@@ -43,7 +43,10 @@ $y = 12;
     } 
 
 if ($slug && !$db["pastes"][$slug]){
-  
+  $randomString = $slug;
+} else {
+  echo "That slug already exists!";
+  die();
 }
 $db = json_decode($file, true);
 if ($edit_code && $edit_code !== $db["pastes"][$id]["edit_code"]){
