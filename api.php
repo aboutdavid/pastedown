@@ -2,7 +2,6 @@
 $ini = parse_ini_file('config.ini');
 $paste = $_REQUEST['paste'];
 $id = $_REQUEST['id'];
-$bypass_captcha = true;
 $edit_code = $_REQUEST['edit_code'];
 if ($paste === null or $paste === "") {
   http_response_code(400);
@@ -21,7 +20,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 $arrResponse = json_decode($response, true);
 // verify the response
-if($arrResponse["success"] == true && $arrResponse["score"] >= 0.5 && $ini['visibility'] == "public" || $bypass_captcha === false) {
+if($arrResponse["success"] == true && $arrResponse["score"] >= 0.0 && $ini['visibility'] == "public") {
 $file = file_get_contents("database.json");
 
 $n = 7;
