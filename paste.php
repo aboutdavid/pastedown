@@ -104,8 +104,8 @@ ob_start("sanitize_output");
             <div class="content-wrapper">
                 <div class="container-fluid">
      <?php 
-    if ($_REQUEST['ec']){
-echo '<div style="height:250px;margin-top:-208px;position:absolute;top:40%;"><p>To edit your pastedown, use the following link:</p><br><code class="code">/edit?edit_code=' . $_REQUEST['ec'] . "&id=" . $_REQUEST['id'] . '</code></div>'; 
+    if ($db["pastes"][$_REQUEST['id']]["views"] == 0){
+echo '<div style="height:250px;margin-top:-208px;position:absolute;top:40%;"><p>To edit your pastedown, use the following link:</p><br><code class="code"><a href="/edit?edit_code=' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] . '">' . $db["pastes"][$_REQUEST['id']]["edit_code"] . "&id=" . $_REQUEST['id'] .</a></code></div>'; 
     }
    ?>
     <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:250px;margin-top:-175px;position:absolute;top:50%;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
