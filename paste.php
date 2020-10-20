@@ -104,7 +104,7 @@ ob_start("sanitize_output");
             <div class="content-wrapper">
                 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm shadow" id="preview" style="padding-left:15px;padding-right:15px;word-break:break-all;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
+    <div class="col-sm shadow" id="preview" style="outline:none;resize:none;border:none;display:block;height:250px;margin-top:-175px;position:absolute;top:50%;"><?php echo $Parsedown->text($db["pastes"][$_REQUEST['id']]["content"]); ?></div></center>
   </div>
 </div>
             </div>
