@@ -11,7 +11,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 RedirectMatch 301 /.apache2(.*) /$1
 RedirectMatch 301 /config.ini /$1
 RewriteEngine On
-
+# Paste rewrite
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^/?paste/(.*?)/?$ /paste.php?id=$1 [L]
