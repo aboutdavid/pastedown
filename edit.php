@@ -7,38 +7,7 @@ http_response_code(404);
 echo "That paste was not found!";
 exit();
 }
-if (!$_REQUEST['edit_code']){
-http_response_code(400);
-echo "You must provide an edit code!";
-exit();
-}
-if ($db["pastes"][$_REQUEST['id']]["edit_code"] !== $_REQUEST['edit_code']){
-http_response_code(403);
-echo "Wrong edit code!";
-exit();
-}
-function sanitize_output($buffer) {
 
-    $search = array(
-        '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
-        '/[^\S ]+\</s',     // strip whitespaces before tags, except space
-        '/(\s)+/s',         // shorten multiple whitespace sequences
-        '/<!--(.|\s)*?-->/' // Remove HTML comments
-    );
-
-    $replace = array(
-        '>',
-        '<',
-        '\\1',
-        ''
-    );
-
-    $buffer = preg_replace($search, $replace, $buffer);
-
-    return $buffer;
-}
-
-ob_start("sanitize_output");
 ?>
 <!DOCTYPE html>
 <html>
@@ -113,8 +82,8 @@ echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $ini['reca
   <button class="btn" type="button" onclick="this.disabled = true;this.innerText = 'Saving...';createPaste();">Save 💾</button>
   <button class="btn" type="button" onclick="halfmoon.toggleDarkMode();">Toggle Theme 🌙</button>
   <div class="form-group">
-  <input type="text" class="form-control" name="edit_code" id="edit_code" placeholder="Full name" required="required" value="<?php echo $_REQUEST['edit_code']; ?>">
-  <input type="text" class="form-control" name="edit_code" id="edit_code" placeholder="Full name" required="required" value="<?php echo $_REQUEST['edit_code']; ?>">
+  <input type="text" class="form-control" name="edit_code" id="edit_code" placeholder="Edit code" required="required"  value="<?php echo $_REQUEST['edit_code']; ?>">
+  &nbsp;<input type="text" class="form-control" required="required" name="id" type="hidden" style="height:250px;margin-top:80px;position:absolute;top:37%;" value="<?php echo $_REQUEST['id']; ?>">
   </div>
 </div>
     <textarea id="editor" oninput="updatePreview();" name="paste" id="paste" cols="200" rows="10"><?php echo $db["pastes"][$_REQUEST['id']]["content"]; ?></textarea>
