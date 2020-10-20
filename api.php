@@ -18,7 +18,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 $arrResponse = json_decode($response, true);
 // verify the response
-if($arrResponse["success"] == true && $arrResponse["score"] >= 0.0 && $ini['visibility'] == "public" || $bypass_captcha === false) {
+if($arrResponse["success"] == true && $arrResponse["score"] >= 0.0 && $ini['visibility'] == "public") {
 $file = file_get_contents("database.json");
 
 $n = 7;

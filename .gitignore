@@ -3,3 +3,7 @@ database.json
 config.ini
 .apache2
 php.ini
+.mysql
+.composer
+.mysql_history
+.glitch-assets
