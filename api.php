@@ -44,7 +44,10 @@ $y = 12;
 
 $db = json_decode($file, true);
 if ($edit_code && $edit_code == $id) {
-  $randomString = $edit_code;
+  $randomString == $id;
+} else {
+  echo "Wrong edit code!";
+  die();
 }
 
 $db["pastes"][$randomString]["content"] = $paste;
@@ -55,7 +58,7 @@ $encoded = json_encode($db);
 $fileobj = fopen("database.json", 'w');
 fwrite($fileobj,$encoded);
 fclose($fileobj);
-header("Location: /paste/" . $randomString);
+header("Location: /paste/" . $randomString .  "?ec=" . $editCode);
 exit();
   
 } else {
